@@ -16,7 +16,7 @@ class CreateLenguajesTable extends Migration
         Schema::create('lenguajes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-              $table->string('descripcion');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

@@ -12,8 +12,35 @@
 */
 
 Route::get('/', function () {
-    return view('indexadmin');
+    if(Auth::check()){
+        return view('indexadmin');
+    }else{
+        return redirect()->route('login');
+    }
+    
+})->name('/');
+
+
+Route::middleware('auth')->group(function(){
+
+    Route::post('/sesiones','ComponentesController@sesiones');
+    Route::get('/ver','ComponentesController@vista');    
+    Route::get('/limpiarcampo','ComponentesController@limpiarcampo')->name('limpiarcampo');
+    
+    Route::resource('/lenguajes','LenguajesController');
+    Route::resource('/capitulos','CapitulosController');
+    Route::resource('/referencias','ReferenciasController');
+    Route::resource('/practicas','PracticasController');
+    Route::resource('/tablas','TablasController');
+    Route::resource('/componentes','ComponentesController');
+    Route::resource('/blogs','BlogController');
+    Route::resource('/relaciones','relacionesController');
+    Route::resource('/perfiles','PerfilesController');
+    Route::resource('/informaciones','InformacionController');
+    
+    
 });
+
 Route::get('/b', function () {
     return view('index');
 });
@@ -26,25 +53,10 @@ Route::get('/homenosotros', function () {
 });
 
 
-Route::post('/sesiones','ComponentesController@sesiones');
-Route::get('/ver','ComponentesController@vista');
-
-Route::get('/limpiarcampo','ComponentesController@limpiarcampo')->name('limpiarcampo');
-
-Route::resource('/lenguajes','LenguajesController');
-Route::resource('/capitulos','CapitulosController');
-Route::resource('/referencias','ReferenciasController');
-Route::resource('/practicas','PracticasController');
-Route::resource('/tablas','TablasController');
-Route::resource('/componentes','ComponentesController');
-Route::resource('/blogs','BlogController');
-Route::resource('/relaciones','relacionesController');
-Route::resource('/perfiles','PerfilesController');
-
-
-Route::resource('/informaciones','InformacionController');
 
 
 
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
