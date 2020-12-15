@@ -11,10 +11,9 @@
 
 		<table class="table table-striped table-bordered table-hover">
 		    <thead>
-		      <tr> 
+		      <tr>
+		       <th>Lenguaje</th> 
 		        <th>Capitulo</th>
-		         <th>Practica</th>
-		         <th>Referencias</th>
 		         <th>Titular</th>
 		         <th>Autor</th>
 		         <th>Fecha</th>
@@ -26,9 +25,8 @@
 		    	
 			@foreach($blogs as $blog)
 		      <tr>
+		      	<td>{{$blog->lenguajes['nombre']}}</td>
 		      	<td>{{$blog->capitulo['nombre']}}</td>
-		      	<td>{{$blog->practicas['nombre']}}</td>
-		      	<td>{{$blog->referencias['nombre']}}</td>
 		      	<td>{{$blog->titular}}</td>
 		      	<td>{{$blog->autor}}</td>
 		      	<td>{{$blog->fercha}}</td>

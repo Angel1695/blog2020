@@ -15,14 +15,17 @@ class CreateBlogTable extends Migration
     {
         Schema::create('blog', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idreferencias')->unsigned();
+            $table->integer('idreferencias')->nullable();
             $table->foreign('idreferencias')->references('id')->on('referencias');
 
             $table->integer('idcapitulos')->unsigned();
             $table->foreign('idcapitulos')->references('id')->on('capitulos');
 
-            $table->integer('idpractica')->unsigned();
+            $table->integer('idpractica')->nullable();
             $table->foreign('idpractica')->references('id')->on('practicas');
+
+            $table->integer('idtabla')->nullable();
+            $table->foreign('idtabla')->references('id')->on('tablas');
 
             $table->string('titular');
             $table->string('autor');

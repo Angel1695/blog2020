@@ -21,7 +21,7 @@ class CreateRelacionTable extends Migration
             $table->integer('idblog')->unsigned();
             $table->foreign('idblog')->references('id')->on('blog');
 
-            $table->string('valor');
+            $table->text('valor');
             $table->timestamps();
         });
     }

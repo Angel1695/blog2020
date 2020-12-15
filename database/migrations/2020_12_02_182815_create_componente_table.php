@@ -15,7 +15,7 @@ class CreateComponenteTable extends Migration
     {
         Schema::create('componentes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->text('nombre');
             $table->timestamps();
         });
     }

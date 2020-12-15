@@ -8,6 +8,7 @@ use App\Blog;
 use App\Referencias;
 use App\Capitulos;
 use App\Practicas;
+use App\Lenguajes;
 
 
 class BlogController extends Controller
@@ -29,12 +30,11 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
+    {   
+
+        $lenguajes = Lenguajes::orderBy('nombre','asc')->pluck('nombre', 'id');
         $capitulos = Capitulos::orderBy('nombre','asc')->pluck('nombre', 'id');
-        $practicas = Practicas::orderBy('nombre','asc')->pluck('nombre', 'id');
-        $referencias = Referencias::orderBy('nombre','asc')->pluck('nombre', 'id');
-        return view('admin.blogsc.crear', compact('referencias','capitulos','practicas'));
+        return view('admin.blogsc.crear', compact('lenguajes','capitulos'));
     }
 
     /**
@@ -47,9 +47,8 @@ class BlogController extends Controller
     {
         //Validar la información
         $this->validate($request, [
+            'lenguaje' => 'required',
             'capitulos' => 'required|max:50',
-            'practicas' => 'required',
-            'referencias' => 'required',
             'titular' => 'required',
             'autor' => 'required',
             'fercha' => 'required',
@@ -57,9 +56,8 @@ class BlogController extends Controller
 
         //Guardar esa información en la tabla
         $blogs = Blog::create([
+            'idlenguajes' => $request->get('lenguaje'),
                 'idcapitulos' => $request->get('capitulos'),
-                'idpractica' => $request->get('practicas'),
-                'idreferencias' => $request->get('referencias'),
                 'titular' => $request->get('titular'),
                 'autor' => $request->get('autor'),
                 'fercha' => $request->get('fercha'),
@@ -86,12 +84,11 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    { 
+        $lenguajee = DB::table('lenguajes')->pluck('nombre', 'id');
         $capituloe = DB::table('capitulos')->pluck('nombre', 'id');
-        $practicae = DB::table('practicas')->pluck('nombre', 'id');
-        $referenciae = DB::table('referencias')->pluck('nombre', 'id');
         $bloge = Blog::find($id);
-        return view('admin.blogsc.editar', compact('capituloe','practicae','referenciae','bloge'));
+        return view('admin.blogsc.editar', compact('lenguajee','capituloe','bloge'));
     }
 
     /**
@@ -105,10 +102,8 @@ class BlogController extends Controller
     {
         //Validar la información
         $this->validate($request, [
-            
+            'idlenguajes' => 'required',
             'idcapitulos' => 'required',
-            'idpractica' => 'required',
-            'idreferencias' => 'required',
             'titular' => 'required',
             'autor' => 'required',
             'fercha' => 'required'
@@ -116,9 +111,8 @@ class BlogController extends Controller
 
         //Actualizar la informacion
         $bloge = Blog::find($id);
+        $bloge->idlenguajes = $request->get("idlenguajes");
         $bloge->idcapitulos = $request->get("idcapitulos");
-        $bloge->idpractica = $request->get("idpractica");
-        $bloge->idreferencias = $request->get("idreferencias");
         $bloge->titular = $request->get("titular");
         $bloge->autor = $request->get("autor");
         $bloge->fercha = $request->get("fercha");

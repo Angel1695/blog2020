@@ -18,8 +18,8 @@ class CreateTablasTable extends Migration
             $table->integer('idblog')->unsigned();
             $table->foreign('idblog')->references('id')->on('blog');    
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->string('codigo');
+            $table->text('descripcion');
+            $table->text('codigo');
             $table->timestamps();
         });
     }

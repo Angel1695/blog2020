@@ -16,8 +16,8 @@ class CreatePracticasTable extends Migration
         Schema::create('practicas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->string('codigo');
+            $table->text('descripcion');
+            $table->text('codigo');
             $table->timestamps();
         });
     }

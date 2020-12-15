@@ -18,6 +18,12 @@
 		@endif		
 
 		{!! Form::model($bloge, ['route' => ['blogs.update', $bloge->id],'method'=>'PUT']) !!}
+		<div class="form-group">
+				<strong><h5>Lenguaje</h5></strong>
+                {!! Form::select('idlenguajes',$lenguajee,null,['class' => 'form-control',
+                  'placeholder'=>'Seleccione una opción',
+                  'required'=>'required']) !!}
+			</div>
 			
 			<div class="form-group">
 				<strong><h5>Capitulo</h5></strong>
@@ -25,19 +31,7 @@
                   'placeholder'=>'Seleccione una opción',
                   'required'=>'required']) !!}
 			</div>
-			<div class="form-group">
-				<strong><h5>practica</h5></strong>
-                {!! Form::select('idpractica',$practicae,null,['class' => 'form-control',
-                  'placeholder'=>'Seleccione una opción',
-                  'required'=>'required']) !!}
-			</div>
-			
-			<div class="form-group">
-				<strong><h5>referencias</h5></strong>
-                {!! Form::select('idreferencias',$referenciae,null,['class' => 'form-control',
-                  'placeholder'=>'Seleccione una opción',
-                  'required'=>'required']) !!}
-			</div>
+		
 
 			<div class="form-group">
 				{!! Form::text('titular', null, array(

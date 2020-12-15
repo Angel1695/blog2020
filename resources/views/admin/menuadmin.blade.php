@@ -34,9 +34,6 @@
                 <a class="nav-link" href="/blogs">Blogs<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/relaciones">Relaciones<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
                 <a class="nav-link" href="/ver">crear blog<span class="sr-only">(current)</span></a>
             </li>
         </ul>

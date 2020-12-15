@@ -47,7 +47,6 @@ class relacionesController extends Controller
         $this->validate($request, [
             'blogs' => 'required',
             'valor' => 'required',
-            
         ]);        
 
         //Guardar esa información en la tabla

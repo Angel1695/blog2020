@@ -18,6 +18,15 @@
 		@endif		
 
 		{!! Form::open(['route' => ['blogs.store'],'enctype'=>'multipart/form-data']) !!}
+		<div class="form-group">
+				 <strong><h5>Lenguaje</h5></strong>
+				<select name="lenguaje" class="form-control" required>
+                  <option value="">Seleccione una opción</option>
+                  @foreach ($lenguajes as $lenguaje => $value)
+                  <option value="{{ $lenguaje }}"> {{ $value }}</option>   
+                  @endforeach
+              </select>
+			</div>
 			<div class="form-group">
 				 <strong><h5>Capitulo</h5></strong>
 				<select name="capitulos" class="form-control" required>
@@ -27,26 +36,6 @@
                   @endforeach
               </select>
 			</div>
-			<div class="form-group">
-				 <strong><h5>Practica</h5></strong>
-				<select name="practicas" class="form-control" required>
-                  <option value="">Seleccione una opción</option>
-                  @foreach ($practicas as $practica => $value)
-                  <option value="{{ $practica }}"> {{ $value }}</option>   
-                  @endforeach
-              </select>
-			</div>
-			<div class="form-group">
-				 <strong><h5>Referencias</h5></strong>
-				<select name="referencias" class="form-control" required>
-                  <option value="">Seleccione una opción</option>
-                  @foreach ($referencias as $referencia => $value)
-                  <option value="{{ $referencia }}"> {{ $value }}</option>   
-                  @endforeach
-              </select>
-			</div>
-
-
 			<div class="form-group">
 				{!! Form::text('titular', null, array(
 						'class'=>'form-control',
@@ -64,8 +53,9 @@
 				!!}
 			</div>
 			<div class="form-group">
-				{!! Form::text('fercha', null, array(
+				{!! Form::date('fercha', null, array(
 						'class'=>'form-control',
+						'id'=>'example-date-input',
 						'required'=>'required',
 						'placeholder'=>'fecha...'
 					)) 
