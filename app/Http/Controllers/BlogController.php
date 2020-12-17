@@ -20,8 +20,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
-        return view('admin.blogsc.index',compact('blogs'));
+        switch(auth()->user()->idperfil){
+            case 1:
+                $viewData['blogs'] = Blog::all();
+            break;
+            case 2:case 3:
+                $viewData['blogs'] = Blog::where('idUser', auth()->user()->id)->get();
+        }
+        
+        return view('admin.blogsc.index',$viewData);
     }
 
     /**
@@ -61,9 +68,13 @@ class BlogController extends Controller
                 'titular' => $request->get('titular'),
                 'autor' => $request->get('autor'),
                 'fercha' => $request->get('fercha'),
+                'idUser'=>auth()->user()->id,
         ]);
-        $mensaje = $blogs?'Blog creado correctamente!':'El Blog no ha sido creada!';
-        return redirect()->route('blogs.index')->with('mensaje',$mensaje);
+        session(['blog'=>$blogs]);
+        $mensaje = $blogs?'Blog creado correctamente!':'El Blog no ha sido creado!';
+        //return redirect()->route('blogs.index')->with('mensaje',$mensaje);
+        return redirect('/ver');
+        
     }
 
     /**

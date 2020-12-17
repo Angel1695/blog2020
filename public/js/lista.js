@@ -10,6 +10,11 @@ $('.componente').on('click',function(){
 	let id = (this).dataset.id;
 	// let value = (this).val();
 	console.log('componente selecionado '+id+' '+$(this).text());
+	if(id == 13 || id == 14){
+		//si el componente es una tabla o practica, 
+		//se elimina para que solo pueda crearse una tabla por blog
+		$(this).remove();
+	}
 
 	$.ajax({
 		url:'/sesiones',

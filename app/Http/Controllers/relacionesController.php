@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Blog;
 use App\Componentes;
 use App\Relacion;
+use App\Tablas;
 
 class relacionesController extends Controller
 {
@@ -31,6 +32,7 @@ class relacionesController extends Controller
     {   
         $blogs = Blog::orderBy('titular','asc')->pluck('titular', 'id');
         $componentes=session('componentes'); 
+        //return $componentes;
         return view('admin.formulariob', compact('componentes','blogs'));
     }
 
@@ -42,21 +44,40 @@ class relacionesController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        //Validar la información
-        $this->validate($request, [
-            'blogs' => 'required',
-            'valor' => 'required',
-        ]);        
-
-        //Guardar esa información en la tabla
-        $relaciones = Relaciones::create([
-            'idblog' => $request->get('blogs'),
-                'valor' => $request->get('valor'),
-                
-        ]);
-        $mensaje = $relaciones?'Relacion creado correctamente!':'La Relacion no ha sido creada!';
-        return redirect()->route('relaciones.index')->with('mensaje',$mensaje);
+        //return $request;
+        
+        $blog = @session('blog');
+        $componentes = @session('componentes');
+        foreach($request->except('_token') as $key => $item){
+            $id = explode("_", $key);
+            $componente_id = $componentes[end($id)];
+            //Guardar esa información en la tabla
+            switch($componente_id){
+                case 5:case 11:
+                    $item = $request->file($key)->store('imagenes', 'public');
+                break;
+                case 13:
+                    $tablas = $request->{$key};
+                    foreach($tablas as $tabla){
+                        $tabla['idblog'] = $blog->id;
+                        Tablas::create($tabla);
+                    }
+                break;
+            }
+            if($componente_id != 13){
+                $relaciones = Relacion::create([
+                    'idblog' => $blog->id,
+                    'idcomponente'=>$componente_id,
+                    'valor' => @$item,
+                    'orden' => end($id),
+                ]);
+            }{$relaciones = true;}
+            
+        }
+        session()->forget('componentes');
+        session()->forget('blog');
+        $mensaje = $relaciones?'Blog creado correctamente!':'el Blog no ha sido creada!';
+        return redirect()->route('blogs.index')->with('mensaje',$mensaje);
     }
 
     /**

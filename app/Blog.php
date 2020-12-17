@@ -14,7 +14,7 @@ use App\Practicas;
 class Blog extends Model
 {
     protected $table = 'blog';
-    protected $fillable = ['idreferencias','idcapitulos','idtabla','idpractica','titular','autor','fercha'];
+    protected $fillable = ['idcapitulos','idtabla','idpractica','titular','autor','fercha','idUser'];
 
 public function referencias() {
         return $this->belongsTo('App\Referencias','idreferencias' ,'id'); 

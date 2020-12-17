@@ -30,7 +30,7 @@
 
     @yield('contenidoadmin')
 
-
+    @yield('script')
 </body>
 
 
