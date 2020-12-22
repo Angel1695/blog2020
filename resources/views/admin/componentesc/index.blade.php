@@ -6,7 +6,7 @@
  @section('contenidoadmin')
 	<div class="container text-center" style="text-align:center;font-family:Sulphur Point;color:black;">
 		<h1><b>Lista de Componentes</b></h1>
-		<a class="btn btn-outline-warning"href="{{route('componentes.create')}}">Crear Componente</a>
+		<!--no tiene caso tener un boton de crear componente-->
 		<hr>
 
 		<table class="table table-striped table-bordered table-hover">

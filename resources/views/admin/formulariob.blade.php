@@ -85,11 +85,8 @@
 					@break
 					@case(8)
 						<div class="form-group">
-							{!! Form::text('codigo_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'codigo...'
-							))
-							!!}
+								<textarea name="codigo_{{$key}}" id="" cols="30" rows="10"></textarea>
+							
 						</div>
 					@break
 					@case(9)
@@ -166,9 +163,57 @@
 						
 					@break
 					@case(14)
+						<div class="form-group">
+							<div class="card">
+								<div class="card-header">
+									<div class="row">
+										<div class="col"><b>Datos de la practica</b></div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="form-group row">
+										<label for="" class="col-md-4">Nombre de la practica</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" name="practica_{{$key}}[nombre]" >
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="" class="col-md-4">Descripcion de la practica</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" name="practica_{{$key}}[descripcion]">
+											
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="" class="col-md-4">Codigo de la practica</label>
+										<div class="col-md-8">
+											<textarea class="form-control" name="practica_{{$key}}[codigo]" id="" cols="30" rows="3"></textarea>
+										</div>
+									</div>		
+								</div>
+							</div>
+						</div>
 					@break
 				@endswitch
 			@endforeach
+			<hr><!------------------ apartado de referencias ----------------->
+			<div class="form-group">
+				<div class="card">
+					<div class="card-header">
+						<div class="row">
+							<div class="col"><strong>Apartado de Referencias</strong></div>
+							<div class="col-md-4 ml-auto"><a href="" id="btn_newRef" class="btn btn-sm btn-info">Nueva referencia</a></div>
+						</div>
+					</div>
+					<div class="card-body" id="section_referencias">
+						<div class="item_ref form-group row" id="0">
+							<label for="" class="col-md-4">Nombre</label>
+							<div class="col-md-8"><input type="text" class="form-control" required name="referencias[0][nombre]"></div>
+						</div>
+					</div>
+				</div>
+			</div>
 
         	{!! Form::submit('Guardar Tabla', array('class'=>'btn btn-primary'))!!}
         {!! Form::close() !!}
@@ -179,10 +224,15 @@
 </div>
 @endsection
 @section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/monokai");
+	editor.session.setMode("ace/mode/javascript");
+</script>
 	<script>
 		$(document).ready(function(){
 			$('#btn_newRow').on('click', function(){
-				var table = document.getElementById('tbody');
 				var tr = document.getElementsByClassName('row_table');
 				var key = $('tbody').data('key');
 				var id_new = parseInt(tr[tr.length - 1].getAttribute('id')) + 1;
@@ -199,8 +249,16 @@
 
 			$('#tbody').on('click', '.btn_deleteRow', function(){
 				var id = $(this).data('id');
-				console.log(id);
 				$("#"+id).remove();
+				return false;
+			});
+
+			$('#btn_newRef').on('click', function(){
+				var elements = document.getElementsByClassName('item_ref');
+				var id_new = parseInt(elements[elements.length - 1].getAttribute('id')) + 1;
+				var  code = '<div class="item_ref form-group row" id="'+id_new+'"><label for="" class="col-md-4"> Otra referencia</label>'+
+							'<div class="col-md-8"><input type="text" class="form-control" required name="referencias['+id_new+'][nombre]"></div></div>';
+				$('#section_referencias').append(code);
 				return false;
 			});
 		});

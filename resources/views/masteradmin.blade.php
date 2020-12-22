@@ -5,12 +5,24 @@
     <meta name="csrf-token" content="{{csrf_token()}}" />
     <title>Tu Lenguaje @yield('Titulo')</title>
     <!-- bostrap -->
-
+    <style type="text/css" media="screen">
+        #editor { 
+            position: absolute;
+            top: 0;
+            right: 17%;
+            bottom: 0;
+            left: 17%;
+        }
+    </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+        <link href="https://cdn.alloyui.com/3.0.1/aui-css/css/bootstrap.min.css" rel="stylesheet"></link>
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 
     <!-- fin bostrap  -->
@@ -31,17 +43,6 @@
     @yield('contenidoadmin')
 
     @yield('script')
-</body>
-
-
-<footer>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- estilo css  -->
-    <link rel="stylesheet" type="text/css" href="css/estilofooter.css">
-    <!-- fin estilo css   -->
-
 
     <!-- jquery -->
 
@@ -53,6 +54,20 @@
     </script>
 
     <script src="{{ asset('/vendor/ckeditor/ckeditor.js') }}"></script>
+
+   
+    
+</body>
+
+
+<footer>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- estilo css  -->
+    <link rel="stylesheet" type="text/css" href="css/estilofooter.css">
+    <!-- fin estilo css   -->
+
 
     <!-- finjqueri -->
     @include('secciones.foother')

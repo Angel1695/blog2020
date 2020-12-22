@@ -8,6 +8,8 @@ use App\Blog;
 use App\Componentes;
 use App\Relacion;
 use App\Tablas;
+use App\Practicas;
+use App\Referencias;
 
 class relacionesController extends Controller
 {
@@ -48,7 +50,7 @@ class relacionesController extends Controller
         
         $blog = @session('blog');
         $componentes = @session('componentes');
-        foreach($request->except('_token') as $key => $item){
+        foreach($request->except('_token', 'referencias') as $key => $item){
             $id = explode("_", $key);
             $componente_id = $componentes[end($id)];
             //Guardar esa información en la tabla
@@ -62,21 +64,29 @@ class relacionesController extends Controller
                         $tabla['idblog'] = $blog->id;
                         Tablas::create($tabla);
                     }
+                    $item = "tabla";
+                break;
+                case 14:
+                    $practica = Practicas::create($request->{$key});
+                    Blog::where('id', $blog->id)->update(['idpractica'=>$practica->id]);
+                    $item = "practica";
                 break;
             }
-            if($componente_id != 13){
                 $relaciones = Relacion::create([
                     'idblog' => $blog->id,
                     'idcomponente'=>$componente_id,
                     'valor' => @$item,
                     'orden' => end($id),
                 ]);
-            }{$relaciones = true;}
             
+        }
+        foreach($request->referencias as $ref){
+            $ref['idBlog'] = $blog->id;
+            Referencias::create($ref);
         }
         session()->forget('componentes');
         session()->forget('blog');
-        $mensaje = $relaciones?'Blog creado correctamente!':'el Blog no ha sido creada!';
+        $mensaje = $relaciones?'Blog creado correctamente!':'el Blog no ha sido creado!';
         return redirect()->route('blogs.index')->with('mensaje',$mensaje);
     }
 

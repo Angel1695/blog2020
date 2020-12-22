@@ -8,7 +8,7 @@ use App\Blog;
 class Referencias extends Model
 {
     protected $table = 'referencias';
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre','idBlog'];
 
      public function blog()
     {

@@ -9,6 +9,8 @@ use App\Referencias;
 use App\Capitulos;
 use App\Practicas;
 use App\Lenguajes;
+use App\Tablas;
+use App\Relacion;
 
 
 class BlogController extends Controller
@@ -144,9 +146,22 @@ class BlogController extends Controller
         $mensaje = 'No se puede eliminar ya que este elemento esta relacionado con otros registros!';
          try {
             $bloge = Blog::find($id);
-            $bloge->delete();
-
-            return redirect()->route('blogs.index');
+            if(!empty($bloge)){
+                //return $bloge;
+                    //si el blog tiene una practica se elimina
+                if($bloge->idpractica != null){Practicas::destroy($bloge->idPractica);}
+                //si existe una tabla referente al blog lo elimina
+                Tablas::where('idblog', $bloge->id)->delete();
+                //si existen referencias pertenecientes al blog tambien las elimina
+                Referencias::where('idBlog', $bloge->id)->delete();
+                //relaciones
+                Relacion::where('idblog', $bloge->id)->delete();
+                //despues de eliminar todas las dependencias ya se puede eliminar el blog
+                $bloge->delete();
+                return redirect()->route('blogs.index');
+            }else{
+                return redirect()->route('blogs.index')->with('mensaje',"El blog que desea eliminar no exite");
+            }
         }catch (\Illuminate\Database\QueryException $e){
             return redirect()->route('blogs.index')->with('mensaje',$mensaje);
         }

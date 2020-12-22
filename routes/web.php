@@ -38,6 +38,9 @@ Route::middleware('auth')->group(function(){
     Route::resource('/perfiles','PerfilesController');
     Route::resource('/informaciones','InformacionController');
     
+
+    //plantillas
+    Route::get('plantillaDefault/{id}', 'PlantillaController@index')->name('plantilladefault');
     
 });
 

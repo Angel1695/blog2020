@@ -21,6 +21,7 @@
                         <th>Titular</th>
                         <th>Autor</th>
                         <th>Fecha</th>
+                        <th>ver blog</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -35,9 +36,10 @@
                         <td>{{$blog->autor}}</td>
                         <td>{{$blog->fercha}}</td>
                         <td>
-                            <a class="btn btn-secondary" href="{{route('blogs.edit',$blog->id)}}">
-                                <i class="fa fa-pencil-square fa-2x"></i>
-                            </a>
+                            <a href="{{route('plantilladefault',$blog->id )}}" class="btn btn-secondary"><i class="fa fa-eye fa-2x"></i></a>
+                        </td>
+                        <td>
+                            <a class="btn btn-secondary" href="{{route('blogs.edit',$blog->id)}}"><i class="fa fa-pencil-square fa-2x"></i></a>
                         </td>
 
 
