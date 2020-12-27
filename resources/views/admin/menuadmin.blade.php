@@ -28,6 +28,12 @@
                 <a class="nav-link" href="/tablas">Tablas<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
+                <a class="nav-link" href="/seccion/etiqueta">Etiquetas<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/seccion/ejemplo">Ejemplos<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
                 <a class="nav-link" href="/componentes">componentes<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">

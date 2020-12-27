@@ -49,6 +49,7 @@ class relacionesController extends Controller
         //return $request;
         
         $blog = @session('blog');
+       // return $blog;
         $componentes = @session('componentes');
         foreach($request->except('_token', 'referencias') as $key => $item){
             $id = explode("_", $key);
@@ -60,13 +61,18 @@ class relacionesController extends Controller
                 break;
                 case 13:
                     $tablas = $request->{$key};
+                    $tipo = $tablas['tipo'];
+                    unset($tablas['tipo']);
                     foreach($tablas as $tabla){
-                        $tabla['idblog'] = $blog->id;
-                        Tablas::create($tabla);
+                            $tabla['idblog'] = $blog->id;
+                            $tabla['tipo']=$tipo;
+                            Tablas::create($tabla);
+                        
                     }
                     $item = "tabla";
                 break;
                 case 14:
+                    //cambiar la clave foranea
                     $practica = Practicas::create($request->{$key});
                     Blog::where('id', $blog->id)->update(['idpractica'=>$practica->id]);
                     $item = "practica";

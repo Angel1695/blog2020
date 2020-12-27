@@ -14,10 +14,10 @@ class PlantillaController extends Controller
     public function index($id){
         $viewData['blog']=Blog::with('practicas')->where('id',$id)->first();
         $viewData['componentes']= Relacion::where('idblog', $id)->orderBy('orden', 'ASC')->get();
-        $viewData['tablas'] = Practicas::where('idblog', $id);
+        $viewData['tablas'] = Tablas::where('idblog', $id)->get();
         $viewData['referencias'] = Referencias::where('idBlog', $id);
         $viewData['code'] = '<div class="col-md-2"></div>';
-        //return $viewData;
+        return $viewData;
         return view('plantillas.plantillaDefault', $viewData);
     }
 }

@@ -6,7 +6,7 @@
 @section('contenidoadmin')
 <div class="container text-center" style="text-align:center;font-family:Sulphur Point;color:black;">
     <h1><b>Lista de Lenguajes</b></h1>
-	@can('idAdmin')
+	@can('isAdmin')
     	<a class="btn btn-outline-warning" href="{{route('lenguajes.create')}}">Crear Lenguaje</a>
 	@endcan
     <hr>

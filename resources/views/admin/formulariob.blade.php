@@ -132,7 +132,14 @@
 							<div class="card">
 									<div class="card-header">
 										<div class="row">
-											<div class="col"><b>Genere su tabla</b></div>
+											<div class="col"><strong>Genere su tabla</strong></div>
+											Tipo
+											<div class="col-md-3">
+												<select class="form-control" name="tabla_{{$key}}[tipo]" id="">
+													<option value="ejemplo" selected>Ejemplo</option>
+													<option value="etiqueta">Etiqueta</option>
+												</select>
+											</div>
 											<a href="" id="btn_newRow" class="btn btn-info">Agregar fila</a>
 										</div>
 									</div>

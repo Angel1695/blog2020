@@ -14,7 +14,7 @@ use App\Practicas;
 class Blog extends Model
 {
     protected $table = 'blog';
-    protected $fillable = ['idcapitulos','idtabla','idpractica','titular','autor','fercha','idUser'];
+    protected $fillable = ['idcapitulos','idpractica','titular','autor','fercha','idUser'];
     
 
 public function referencias() {
@@ -24,9 +24,9 @@ public function referencias() {
 public function capitulo() {
         return $this->belongsTo('App\Capitulos','idcapitulos' ,'id'); 
     }
- public function tabla()
+ public function tablas()
     {
-        return $this->hasOne('App\Tablas');
+        return $this->hasMany('App\Tablas','idblog', 'id');
     } 
 
 public function practicas() {

@@ -1,0 +1,7 @@
+/* force class color to override the bootstrap base rule
+NOTE: adding 'url: #' to calendar makes this unneeded
+*/
+.fc-event, .fc-event:hover {
+     color: #fff !important;
+     text-decoration: none;
+}

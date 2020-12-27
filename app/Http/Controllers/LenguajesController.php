@@ -39,8 +39,8 @@ class LenguajesController extends Controller
     {
         //Validar la información
         $this->validate($request, [
-            'nombre' => 'required|unique:lenguajes|max:50',
-            'descripcion' => 'required|unique:lenguajes|max:50'
+            'nombre' => 'required|unique:lenguajes',
+            'descripcion' => 'required'
         ]);        
 
         //Guardar esa información en la tabla
@@ -86,8 +86,8 @@ class LenguajesController extends Controller
     {
         //Validar la información
         $this->validate($request, [
-            'nombre' => 'required|max:50',
-            'descripcion' => 'required|max:50'
+            'nombre' => 'required',
+            'descripcion' => 'required'
         ]); 
 
         //Actualizar la informacion

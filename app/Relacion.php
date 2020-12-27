@@ -9,7 +9,7 @@ use App\Componentes;
 class Relacion extends Model
 {
     protected $table = 'relacion';
-    protected $fillable = ['idcomponente','idblog','valor', 'orden'];
+    protected $fillable = ['idcomponente','idblog','valor', 'orden', 'tipo'];
 
 public function componentes()
     {

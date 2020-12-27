@@ -13,7 +13,8 @@
 
 Route::get('/', function () {
     if(Auth::check()){
-        return view('indexadmin');
+       return redirect('/inicio');
+        
     }else{
         return redirect()->route('login');
     }
@@ -37,8 +38,11 @@ Route::middleware('auth')->group(function(){
     Route::resource('/relaciones','relacionesController');
     Route::resource('/perfiles','PerfilesController');
     Route::resource('/informaciones','InformacionController');
-    
+    Route::get('/seccion/{section}', 'EtiquetaController@index');
+    Route::get('/seccion/{section}/{id}', 'EtiquetaController@show');
 
+    Route::get('/apartado/capitulos/{id}', 'HomeController@secciones');
+    Route::get('/apartado/capitulos/{id}/{capitulos_id}', 'HomeController@secciones');
     //plantillas
     Route::get('plantillaDefault/{id}', 'PlantillaController@index')->name('plantilladefault');
     
@@ -62,4 +66,5 @@ Route::get('/homenosotros', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/inicio', 'HomeController@index')->name('home');
+
