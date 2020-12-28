@@ -21,7 +21,7 @@
                             @foreach($blog->tablas as $tabla)
                                 @if($tabla->tipo == $section)
                                     <div class="row">
-                                        <div class="col-md-12"><a href="{{url('/'.$section.'/'.$tabla->id)}}" class="btn btn-link">{{$tabla->nombre}}</a></div>
+                                        <div class="col-md-12"><a href="{{url('/seccion/'.$section.'/'.$tabla->id)}}" class="btn btn-link">{{$tabla->nombre}}</a></div>
                                     </div>
                                 @endif
                             @endforeach

@@ -1,7 +1,7 @@
 <div class="navbar navbar-light bg-light justify-content-between">
     <!-- Brand/logo -->
     <div>
-        <a class="navbar-brand" href="/b">
+        <a class="navbar-brand" href="/">
             <img src="{{ asset("archivos/h3.png") }}" alt="logo" style="width:150px;">
         </a>
     </div>
@@ -41,12 +41,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background: rgb(241, 196, 15);">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/b" style="text-align:center;font-family:Sulphur Point;color:black;">HOME<span
+                <a class="nav-link" href="/" style="text-align:center;font-family:Sulphur Point;color:black;">Inicio<span
                         class="sr-only">(current)</span></a>
             </li>
             @foreach($lenguajes as $lenguaje)
                 <li class="nav-item dropdown" style="text-align:center;font-family:Sulphur Point;color:black;">
-                    <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" href=""  role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">{{$lenguaje->nombre}}</a>
 
                     <div class="dropdown-menu" >

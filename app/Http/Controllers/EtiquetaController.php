@@ -56,6 +56,7 @@ class EtiquetaController extends Controller
      */
     public function show($section, $id)
     {
+        $viewData['lenguajes'] = (auth()->user()->idperfil != 1) ? Lenguajes::with('capitulos')->get() : [];
          $viewData['etiqueta'] = Tablas::find($id);
          $viewData['blogs'] = Blog::with(['capitulo', 'tablas'])->orderBy('idcapitulos')->get();
          $viewData['section'] =  $section;
