@@ -12,11 +12,11 @@ use App\Referencias;
 class PlantillaController extends Controller
 {
     public function index($id){
-        $viewData['blog']=Blog::with('practicas')->where('id',$id)->first();
+        $viewData['blog']=Blog::with('practica')->where('id',$id)->first();
         $viewData['componentes']= Relacion::where('idblog', $id)->orderBy('orden', 'ASC')->get();
         $viewData['tablas'] = Tablas::where('idblog', $id)->get();
         $viewData['referencias'] = Referencias::where('idBlog', $id);
-        $viewData['code'] = '<div class="col-md-2"></div>';
+        
         return $viewData;
         return view('plantillas.plantillaDefault', $viewData);
     }

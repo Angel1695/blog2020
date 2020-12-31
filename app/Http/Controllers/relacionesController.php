@@ -73,8 +73,10 @@ class relacionesController extends Controller
                 break;
                 case 14:
                     //cambiar la clave foranea
-                    $practica = Practicas::create($request->{$key});
-                    Blog::where('id', $blog->id)->update(['idpractica'=>$practica->id]);
+                    $pr = $request->{$key};
+                    $pr['idBlog'] = $blog->id;
+                    $practica = Practicas::create($pr);
+                    //Blog::where('id', $blog->id)->update(['idpractica'=>$practica->id]);
                     $item = "practica";
                 break;
             }

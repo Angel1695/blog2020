@@ -166,4 +166,9 @@ class BlogController extends Controller
             return redirect()->route('blogs.index')->with('mensaje',$mensaje);
         }
     }
+
+    public function getCapitulos($lenguajes_id){
+        $capitulos = Capitulos::where('idlenguajes',$lenguajes_id)->orderBy('nombre','asc')->get();
+        return $capitulos;
+    }
 }
