@@ -80,6 +80,59 @@
                             </div>
                         </div><br>
                     @break
+                    @case (13)<!--tabla-->
+                        <br><div class="row text-justify">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="card">
+                                    <div class="card-header"><h4>Tabla de {{$tablas[0]['tipo']}}s</h4></div>
+                                    <div class="card-body">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-striped table-bordered table-light">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Codigo</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($tablas as $tabla)
+                                                        <tr>
+                                                            <td>{{$tabla->nombre}}</td>
+                                                            <td><small>{{$tabla->descripcion}}</small></td>
+                                                            <td><pre><code>{{$tabla->codigo}}</code></pre></td>
+                                                        </tr>
+                                                    @endforeach    
+                                                </tbody>
+                                                
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br>
+                    @break
+                    @case (14)<!--practicas-->
+                        <div class="row text-justify">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="card">
+                                <div class="card-header"><h4>Practica</h4></div>
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <div class="row text-center"><h5>{{$blog->practica->nombre}}</h5></div>
+                                        <br><div class="row text-justify">
+                                            <p>{{$blog->practica->descripcion}}</p>
+                                        </div><br>
+                                        <div class="row">
+                                            <pre><code>{{$blog->practica->codigo}}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div><br>
+                    @break
                 @endswitch
                 
             @endforeach
