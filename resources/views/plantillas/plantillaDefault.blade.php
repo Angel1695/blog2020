@@ -66,7 +66,7 @@
                             <div class="col-md-10 offset-md-1">
                                 <div class="card">
                                 <div class="card-body">
-                                    <pre><code>{{$item->valor}}</code></pre>
+                                    <pre><code class="language-html">{{$item->valor}}</code></pre>
                                 </div>
                                 </div>
                                 
@@ -100,7 +100,7 @@
                                                         <tr>
                                                             <td>{{$tabla->nombre}}</td>
                                                             <td><small>{{$tabla->descripcion}}</small></td>
-                                                            <td><pre><code>{{$tabla->codigo}}</code></pre></td>
+                                                            <td><pre><code class="language-html">{{$tabla->codigo}}</code></pre></td>
                                                         </tr>
                                                     @endforeach    
                                                 </tbody>
@@ -124,7 +124,9 @@
                                             <p>{{$blog->practica->descripcion}}</p>
                                         </div><br>
                                         <div class="row">
-                                            <pre><code>{{$blog->practica->codigo}}</code></pre>
+                                            <div class="col-md-12">
+                                                <pre><code class="language-html">{{$blog->practica->codigo}}</code></pre>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

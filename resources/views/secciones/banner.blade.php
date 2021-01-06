@@ -16,7 +16,8 @@
                             {{@$hijo['nombre']}} 
                         </h2>
                     <p style="text-align:center;font-family:Sulphur Point;color:rgb(0, 0, 128)">
-                        {{@$hijo['descripcion']}}</p>
+                        <pre>{{@$hijo['descripcion']}}</pre>
+                    </p>
                     <center><a href="{{url('/apartado/capitulos/'.$hijo->id)}}" class="btn btn-info">Ver</a></center>
                     <br>
                 </div>

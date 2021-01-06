@@ -8,16 +8,17 @@ use App\Relacion;
 use App\Tablas;
 use App\Practicas;
 use App\Referencias;
+use App\Lenguajes;
 
 class PlantillaController extends Controller
 {
     public function index($id){
-        $viewData['blog']=Blog::with('practica')->where('id',$id)->first();
+        $viewData['blog']=Blog::with(['practica', 'capitulo'])->where('id',$id)->first();
         $viewData['componentes']= Relacion::where('idblog', $id)->orderBy('orden', 'ASC')->get();
         $viewData['tablas'] = Tablas::where('idblog', $id)->get();
         $viewData['referencias'] = Referencias::where('idBlog', $id);
-        
-        // return $viewData;
+        $viewData['lenguaje'] = $this->lenguaje(Lenguajes::find($viewData['blog']['capitulo']['idlenguajes']));
+         return $viewData;
         return view('plantillas.plantillaDefault', $viewData);
     }
 }

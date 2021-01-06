@@ -5,19 +5,9 @@
     <meta name="csrf-token" content="{{csrf_token()}}" />
     <title>Tu Lenguaje @yield('Titulo')</title>
     <!-- bostrap -->
-    <style type="text/css" media="screen">
-        #editor { 
-            position: absolute;
-            top: 0;
-            right: 17%;
-            bottom: 0;
-            left: 17%;
-        }
-    </style>
-
     <link rel="stylesheet" href="{{asset('css/estilo_css/bootstrap.css')}}">
-
-
+    <link rel="stylesheet" href="{{asset('css/prism/prism.css')}}">
+    
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
@@ -45,7 +35,7 @@
 
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('js/filesJS/bootstrap.min.js')}}"></script>
-    
+    <script src="{{asset('js/prism/prism.js')}}"></script> 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
