@@ -37,15 +37,16 @@ class HomeController extends Controller
         }
     }
 
-    public function secciones($id, $capitulos_id = 0){
+    public function secciones($id, $capitulos_id = -1){
         $viewData['lenguajes'] = Lenguajes::with('capitulos')->get();
         $viewData['capitulos'] = Capitulos::with('blogs')->where('idlenguajes', $id)->get();
         $viewData['lenguaje']  = Lenguajes::find($id);
         $viewData['capitulos_id']    = $capitulos_id;
         //return $viewData;
+        
         foreach($viewData['capitulos'] as $k => $cap){
             foreach($cap['blogs'] as $key => $blog){
-                $viewData['capitulos'][$k]['blogs'][$key] = @Blog::with(['tablas', 'practicas', 'referencias'])->find($blog->id);
+                $viewData['capitulos'][$k]['blogs'][$key] = @Blog::with(['tablas', 'practica', 'referencias'])->find($blog->id);
             }
         }
         

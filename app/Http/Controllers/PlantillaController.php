@@ -17,7 +17,7 @@ class PlantillaController extends Controller
         $viewData['tablas'] = Tablas::where('idblog', $id)->get();
         $viewData['referencias'] = Referencias::where('idBlog', $id);
         
-        return $viewData;
+        // return $viewData;
         return view('plantillas.plantillaDefault', $viewData);
     }
 }

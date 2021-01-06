@@ -4,30 +4,89 @@
 
 
 @section('contenidoadmin')
-<div class="container" style="text-align:center;font-family:Sulphur Point;color:black;">
-    <div class="form-group">
-        <div class="card">
-            <div class="card-header"></div>
-            <div class="card-body">
-                <div id="editor">
-                    function foo(items) {
-                    var x = "All this is syntax highlighted";
-                    return x;
-                    }
-                </div>
-            </div>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            @foreach($componentes as $item)
+                @switch($item->idcomponente)
+                    @case (1)     
+                        <div class="row text-center">
+                            <div class="col-md-12">
+                                <h1><strong>{{$item->valor}}</strong></h1>
+                            </div>
+                        </div><br>
+                    @break
+                    @case (2)
+                        <div class="row text-center">
+                            <div class="col-md-12">
+                                <h3><strong>{{$item->valor}}</strong></h3>
+                            </div>
+                        </div><br>
+                    @break
+                    @case (3)
+                        <div class="row text-justify">
+                            <div class="col-md-10 offset-md-1">
+                                <p>{{$item->valor}}</p>
+                            </div>
+                        </div><br>
+                    @break
+                    @case (4)
+                        <div class="row text-center">
+                            <div class="col-md-10 offset-md-1">
+                                <h6><em>{{$item->valor}}</em></h6>
+                            </div>
+                        </div>
+                    @break
+                    @case (5)
+                        <div class="row text-center">
+                            <div class="col-md-8 offset-md-2">
+                                <object class="card-img-top" data="{{asset($item->valor)}}" type="image/png">
+                                    <img class="card-img-top" src="{{asset('archivos/h3.png')}}" />
+                                </object>
+                            </div>
+                            
+                        </div>
+                    @break
+                    @case (6)
+                        <div class="row text-center">
+                            <div class="col-md-8 offset-md-2">
+                                <h6><em>{{$item->valor}}</em></h6>
+                            </div>
+                        </div><br>
+                    @break
+                    @case (7)
+                    <div class="row text-center">
+                        <div class="col-md-8 offset-md-2">
+                            <h6><strong>{{$item->valor}}</strong></h6>
+                        </div>
+                    </div>
+                    @break
+                    @case (8)
+                        <div class="row text-center">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="card">
+                                <div class="card-body">
+                                    <pre><code>{{$item->valor}}</code></pre>
+                                </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    @break
+                    @case (9)
+                        <div class="row text-center">
+                            <div class="col-md-8 offset-md-2">
+                                <h6><em>{{$item->valor}}</em></h6>
+                            </div>
+                        </div><br>
+                    @break
+                @endswitch
+                
+            @endforeach
         </div>
     </div>
 </div>
-
-
 @endsection
 
 @section('script')
-<script src="https://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>
-<script>
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/monokai");
-editor.session.setMode("ace/mode/javascript");
-</script>
 @endsection
