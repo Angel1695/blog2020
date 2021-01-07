@@ -9,6 +9,8 @@ use App\Referencias;
 use App\Capitulos;
 use App\Practicas;
 use App\Lenguajes;
+use App\Tablas;
+use App\Relacion;
 
 
 class BlogController extends Controller
@@ -20,8 +22,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
-        return view('admin.blogsc.index',compact('blogs'));
+        switch(auth()->user()->idperfil){
+            case 1:
+                $viewData['blogs'] = Blog::all();
+            break;
+            case 2:case 3:
+                $viewData['blogs'] = Blog::where('idUser', auth()->user()->id)->get();
+        }
+        
+        return view('admin.blogsc.index',$viewData);
     }
 
     /**
@@ -61,9 +70,13 @@ class BlogController extends Controller
                 'titular' => $request->get('titular'),
                 'autor' => $request->get('autor'),
                 'fercha' => $request->get('fercha'),
+                'idUser'=>auth()->user()->id,
         ]);
-        $mensaje = $blogs?'Blog creado correctamente!':'El Blog no ha sido creada!';
-        return redirect()->route('blogs.index')->with('mensaje',$mensaje);
+        session(['blog'=>$blogs]);
+        $mensaje = $blogs?'Blog creado correctamente!':'El Blog no ha sido creado!';
+        //return redirect()->route('blogs.index')->with('mensaje',$mensaje);
+        return redirect('/ver');
+        
     }
 
     /**
@@ -133,11 +146,29 @@ class BlogController extends Controller
         $mensaje = 'No se puede eliminar ya que este elemento esta relacionado con otros registros!';
          try {
             $bloge = Blog::find($id);
-            $bloge->delete();
-
-            return redirect()->route('blogs.index');
+            if(!empty($bloge)){
+                //return $bloge;
+                    //si el blog tiene una practica se elimina
+                if($bloge->idpractica != null){Practicas::destroy($bloge->idPractica);}
+                //si existe una tabla referente al blog lo elimina
+                Tablas::where('idblog', $bloge->id)->delete();
+                //si existen referencias pertenecientes al blog tambien las elimina
+                Referencias::where('idBlog', $bloge->id)->delete();
+                //relaciones
+                Relacion::where('idblog', $bloge->id)->delete();
+                //despues de eliminar todas las dependencias ya se puede eliminar el blog
+                $bloge->delete();
+                return redirect()->route('blogs.index');
+            }else{
+                return redirect()->route('blogs.index')->with('mensaje',"El blog que desea eliminar no exite");
+            }
         }catch (\Illuminate\Database\QueryException $e){
             return redirect()->route('blogs.index')->with('mensaje',$mensaje);
         }
+    }
+
+    public function getCapitulos($lenguajes_id){
+        $capitulos = Capitulos::where('idlenguajes',$lenguajes_id)->orderBy('nombre','asc')->get();
+        return $capitulos;
     }
 }

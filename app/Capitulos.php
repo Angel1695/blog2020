@@ -16,8 +16,8 @@ class Capitulos extends Model
         return $this->belongsTo('App\Lenguajes','idlenguajes' ,'id'); 
     }
 
-    public function blog()
+    public function blogs()
     {
-        return $this->hasMany('App\Blog');
+        return $this->hasMany('App\Blog','idcapitulos','id');
     }
 }

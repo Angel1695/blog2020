@@ -8,10 +8,12 @@ use App\Blog;
 class Practicas extends Model
 {
     protected $table = 'practicas';
-    protected $fillable = ['nombre','descripcion','codigo'];
+    protected $fillable = ['nombre','descripcion','codigo', 'idBlog'];
 
     public function blog()
     {
-        return $this->hasOne('App\Blog');
+        return $this->belongsTo('App\Blog', 'idBlog', 'id');
     }
+
+    
 }

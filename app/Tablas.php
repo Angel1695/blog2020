@@ -8,7 +8,7 @@ use App\Blog;
 class Tablas extends Model
 {
     protected $table = 'tablas';
-    protected $fillable = ['idblog','nombre','descripcion','codigo'];
+    protected $fillable = ['idblog','nombre','descripcion','codigo', 'tipo'];
 
 
 public function blog() {

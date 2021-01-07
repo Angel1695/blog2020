@@ -39,14 +39,15 @@ class LenguajesController extends Controller
     {
         //Validar la información
         $this->validate($request, [
-            'nombre' => 'required|unique:lenguajes|max:50',
-            'descripcion' => 'required|unique:lenguajes|max:50'
+            'nombre' => 'required|unique:lenguajes',
+            'descripcion' => 'required'
         ]);        
 
         //Guardar esa información en la tabla
         $lenguajes = Lenguajes::create([
                 'nombre' => $request->get('nombre'),
-                'descripcion' => $request->get('descripcion')
+                'descripcion' => $request->get('descripcion'),
+                'clave' => $request->get('clave')
         ]);
         $mensaje = $lenguajes?'Lenguaje creado correctamente!':'El lenguaje no ha sido creado!';
         return redirect()->route('lenguajes.index')->with('mensaje',$mensaje);
@@ -86,8 +87,8 @@ class LenguajesController extends Controller
     {
         //Validar la información
         $this->validate($request, [
-            'nombre' => 'required|max:50',
-            'descripcion' => 'required|max:50'
+            'nombre' => 'required',
+            'descripcion' => 'required'
         ]); 
 
         //Actualizar la informacion

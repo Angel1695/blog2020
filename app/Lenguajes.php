@@ -8,10 +8,10 @@ use App\Capitulos;
 class Lenguajes extends Model
 {
      protected $table = "lenguajes";
-    protected $fillable =['nombre','descripcion'];
+    protected $fillable =['nombre','descripcion', 'clave'];
 // relacion
-public function capitulo()
+public function capitulos()
     {
-        return $this->hasMany('App\Capitulos');
+        return $this->hasMany('App\Capitulos', 'idlenguajes','id' );
     }
 }

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Blog;
 use App\Componentes;
 use App\Relacion;
+use App\Tablas;
+use App\Practicas;
+use App\Referencias;
 
 class relacionesController extends Controller
 {
@@ -31,6 +34,7 @@ class relacionesController extends Controller
     {   
         $blogs = Blog::orderBy('titular','asc')->pluck('titular', 'id');
         $componentes=session('componentes'); 
+        //return $componentes;
         return view('admin.formulariob', compact('componentes','blogs'));
     }
 
@@ -42,21 +46,56 @@ class relacionesController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        //Validar la información
-        $this->validate($request, [
-            'blogs' => 'required',
-            'valor' => 'required',
-        ]);        
-
-        //Guardar esa información en la tabla
-        $relaciones = Relaciones::create([
-            'idblog' => $request->get('blogs'),
-                'valor' => $request->get('valor'),
-                
-        ]);
-        $mensaje = $relaciones?'Relacion creado correctamente!':'La Relacion no ha sido creada!';
-        return redirect()->route('relaciones.index')->with('mensaje',$mensaje);
+        //return $request;
+        
+        $blog = @session('blog');
+       // return $blog;
+        $componentes = @session('componentes');
+        foreach($request->except('_token', 'referencias') as $key => $item){
+            $id = explode("_", $key);
+            $componente_id = $componentes[end($id)];
+            //Guardar esa información en la tabla
+            switch($componente_id){
+                case 5:case 11:
+                    $item = $request->file($key)->store('imagenes', 'public');
+                break;
+                case 13:
+                    $tablas = $request->{$key};
+                    $tipo = $tablas['tipo'];
+                    unset($tablas['tipo']);
+                    foreach($tablas as $tabla){
+                            $tabla['idblog'] = $blog->id;
+                            $tabla['tipo']=$tipo;
+                            Tablas::create($tabla);
+                        
+                    }
+                    $item = "tabla";
+                break;
+                case 14:
+                    //cambiar la clave foranea
+                    $pr = $request->{$key};
+                    $pr['idBlog'] = $blog->id;
+                    $practica = Practicas::create($pr);
+                    //Blog::where('id', $blog->id)->update(['idpractica'=>$practica->id]);
+                    $item = "practica";
+                break;
+            }
+                $relaciones = Relacion::create([
+                    'idblog' => $blog->id,
+                    'idcomponente'=>$componente_id,
+                    'valor' => @$item,
+                    'orden' => end($id),
+                ]);
+            
+        }
+        foreach($request->referencias as $ref){
+            $ref['idBlog'] = $blog->id;
+            Referencias::create($ref);
+        }
+        session()->forget('componentes');
+        session()->forget('blog');
+        $mensaje = $relaciones?'Blog creado correctamente!':'el Blog no ha sido creado!';
+        return redirect()->route('blogs.index')->with('mensaje',$mensaje);
     }
 
     /**
