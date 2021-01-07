@@ -8,7 +8,7 @@ use App\Capitulos;
 class Lenguajes extends Model
 {
      protected $table = "lenguajes";
-    protected $fillable =['nombre','descripcion'];
+    protected $fillable =['nombre','descripcion', 'clave'];
 // relacion
 public function capitulos()
     {

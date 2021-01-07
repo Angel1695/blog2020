@@ -1,12 +1,9 @@
-@if(auth()->user()->idperfil == 1)
-    @extends('masteradmin')
-@else
-    @extends('master')
-@endif
+
+@extends('masteradmin')
 
 @section('Titulo','Lista Tablas')
 
-@section((auth()->user()->idperfil == 1) ? 'contenidoadmin' :'contenido')
+@section('contenidoadmin')
 <div class="container text-center">
     <div class="card">
         <div class="card-header">

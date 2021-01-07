@@ -17,8 +17,8 @@ class PlantillaController extends Controller
         $viewData['componentes']= Relacion::where('idblog', $id)->orderBy('orden', 'ASC')->get();
         $viewData['tablas'] = Tablas::where('idblog', $id)->get();
         $viewData['referencias'] = Referencias::where('idBlog', $id);
-        $viewData['lenguaje'] = $this->lenguaje(Lenguajes::find($viewData['blog']['capitulo']['idlenguajes']));
-         return $viewData;
+        $viewData['lenguaje'] = Lenguajes::find(@$viewData['blog']['capitulo']['idlenguajes'])->clave;
+         //return $viewData;
         return view('plantillas.plantillaDefault', $viewData);
     }
 }

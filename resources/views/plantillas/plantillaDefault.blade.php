@@ -64,12 +64,8 @@
                     @case (8)
                         <div class="row text-center">
                             <div class="col-md-10 offset-md-1">
-                                <div class="card">
-                                <div class="card-body">
-                                    <pre><code class="language-html">{{$item->valor}}</code></pre>
-                                </div>
-                                </div>
-                                
+                                <pre><code class="language-{{$lenguaje}}">{{$item->valor}}</code></pre>
+                              
                             </div>
                         </div>
                     @break
@@ -100,7 +96,7 @@
                                                         <tr>
                                                             <td>{{$tabla->nombre}}</td>
                                                             <td><small>{{$tabla->descripcion}}</small></td>
-                                                            <td><pre><code class="language-html">{{$tabla->codigo}}</code></pre></td>
+                                                            <td><pre><code class="language-{{$lenguaje}}">{{$tabla->codigo}}</code></pre></td>
                                                         </tr>
                                                     @endforeach    
                                                 </tbody>
@@ -125,7 +121,7 @@
                                         </div><br>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <pre><code class="language-html">{{$blog->practica->codigo}}</code></pre>
+                                                <pre><code class="language-{{$lenguaje}}">{{$blog->practica->codigo}}</code></pre>
                                             </div>
                                         </div>
                                     </div>

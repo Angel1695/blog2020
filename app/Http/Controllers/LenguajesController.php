@@ -46,7 +46,8 @@ class LenguajesController extends Controller
         //Guardar esa información en la tabla
         $lenguajes = Lenguajes::create([
                 'nombre' => $request->get('nombre'),
-                'descripcion' => $request->get('descripcion')
+                'descripcion' => $request->get('descripcion'),
+                'clave' => $request->get('clave')
         ]);
         $mensaje = $lenguajes?'Lenguaje creado correctamente!':'El lenguaje no ha sido creado!';
         return redirect()->route('lenguajes.index')->with('mensaje',$mensaje);

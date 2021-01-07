@@ -4,18 +4,8 @@
 <head>
     <title>Tu Lenguaje @yield('Titulo')</title>
     <link rel="stylesheet" href="{{asset('css/estilo_css/bootstrap.css')}}">
-    
-
-   
-
-    <!-- fin bostrap  -->
     <link rel="stylesheet" type="text/css" href="css/prism.css">
-    <!-- fin bostrap  -->
 </head>
-<header>
-    
-</header>
-
 <body>
     @include('secciones.menu')
     @yield('contenido')
