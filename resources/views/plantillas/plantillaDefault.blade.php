@@ -1,9 +1,4 @@
-@extends('masteradmin')
-@section('Titulo','Lista de Blogs')
 
-
-
-@section('contenidoadmin')
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -79,7 +74,7 @@
                     @case (13)<!--tabla-->
                         <br><div class="row text-justify">
                             <div class="col-md-10 offset-md-1">
-                                <div class="card">
+                                <div class="card  border-warning mb-3">
                                     <div class="card-header"><h4>Tabla de {{$tablas[0]['tipo']}}s</h4></div>
                                     <div class="card-body">
                                         <div class="col-md-12">
@@ -111,7 +106,7 @@
                     @case (14)<!--practicas-->
                         <div class="row text-justify">
                             <div class="col-md-10 offset-md-1">
-                                <div class="card">
+                                <div class="card  border-primary mb-3">
                                 <div class="card-header"><h4>Practica</h4></div>
                                 <div class="card-body">
                                     <div class="col-md-12">
@@ -137,7 +132,3 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('script')
-@endsection

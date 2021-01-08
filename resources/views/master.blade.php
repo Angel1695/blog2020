@@ -4,7 +4,7 @@
 <head>
     <title>Tu Lenguaje @yield('Titulo')</title>
     <link rel="stylesheet" href="{{asset('css/estilo_css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="css/prism.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/prism/prism.css')}}">
 </head>
 <body>
     @include('secciones.menu')
@@ -12,7 +12,7 @@
 
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('js/filesJS/bootstrap.min.js')}}"></script>
-    
+    <script type="text/javascript" src="{{asset('js/prism/prism.js')}}"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -24,7 +24,7 @@
 <footer>
 
 
-    <script type="text/javascript" src="js/prism.js"></script>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- estilo css  -->

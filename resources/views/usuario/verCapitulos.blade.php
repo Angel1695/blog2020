@@ -55,7 +55,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <center><a href="" class="btn btn-success">Ver blog</a></center>
+                                                        <center><a href="{{route('plantilladefault',$blog->id )}}" class="btn btn-success">Ver blog</a></center>
                                                     </div>
                                                 </div><br>
                                             </div>

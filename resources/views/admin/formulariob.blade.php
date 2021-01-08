@@ -26,76 +26,82 @@
 				@switch($componente)
 					@case(1)
 						<div class="form-group row">
-							<div class="col-md-8 offset-md-2">
+							<div class="col-md-10 offset-md-1">
 								{!! Form::text('titulo_'.$key, null, array(
 								'class'=>'form-control',
 								'placeholder'=>'Titulo...'
 								))
 								!!}
 							</div>
-						</div>
+						</div><br>
 					@break
 					@case(2)
 						<div class="form-group row">
-							{!! Form::text('subtitulo_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'Subtitulo...'
-							))
-							!!}
-						</div>
+							<div class="col-md-8 offset-md-2">
+								{!! Form::text('subtitulo_'.$key, null, array(
+								'class'=>'form-control',
+								'placeholder'=>'Subtitulo...'
+								))
+								!!}
+							</div>
+						</div><br>
 					@break
 					@case(3)
 						<div class="form-group row">
-							<textarea name="parrafo_{{$key}}" id="valor3" cols="60" rows="5"></textarea>
-						</div>
+							<div class="col-md-10 offset-md-1">
+								<textarea class="form-control" name="parrafo_{{$key}}" id="valor3" cols="80" rows="5" placeholder="Parrafo"></textarea>
+							</div>
+						</div><br>
 					@break
 					@case(4)
 						<div class="form-group">
-							{!! Form::text('titulo_imagen_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'titulo de imagen...'
-							))
-							!!}
+							<div class="col-md-8 offset-md-2">
+								{!! Form::text('titulo_imagen_'.$key, null, array(
+								'class'=>'form-control',
+								'placeholder'=>'titulo de imagen...'
+								))
+								!!}
+							</div>
 						</div>
 					@break
 					@case(5)
 						<div class="form-group">
 							<label for="" class="col-md-5"><strong><h6>Archivo de Imagen</h6></strong>
 							</label>
-							<div class="col-md-7"><input type="file" class="form-control-file" name="imagen_{{$key}}"></div>
+							<div class="col-md-6 offset-md-2"><input type="file" class="form-control-file" name="imagen_{{$key}}"></div>
 						</div>
 					@break
 					@case(6)
 						<div class="form-group">
-							{!! Form::text('descripcion_imagen_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'descripcion de imagen...'
-							))
-							!!}
-						</div>
+							<div class="col-md-8 offset-md-2">
+								<textarea name="descripcion_imagen_{{$key}}"  class="form-control" id="valor3" cols="80" rows="4" placeholder="Descripción de la imagen"></textarea>
+							</div>
+						</div><br>
 					@break
 					@case(7)
 						<div class="form-group">
-							{!! Form::text('titulo_codigo_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'titulo de codigo...'
-							))
-							!!}
+							<div class="col-md-8 offset-md-2">
+								{!! Form::text('titulo_codigo_'.$key, null, array(
+								'class'=>'form-control',
+								'placeholder'=>'titulo de codigo...'
+								))
+								!!}
+							</div>
 						</div>
 					@break
 					@case(8)
 						<div class="form-group">
-								<textarea name="codigo_{{$key}}" id="" cols="30" rows="10"></textarea>
+							<div class="col-md-10 offset-md-1">
+								<textarea name="codigo_{{$key}}" id="" cols="80" rows="6" placeholder="codigo..." class="form-control"></textarea>
+							</div>
 							
 						</div>
 					@break
 					@case(9)
 						<div class="form-group">
-							{!! Form::text('descripcion_codigo_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'descripcion de codigo...'
-							))
-							!!}
+							<div class="col-md-8 offset-md-2">
+								<textarea name="descripcion_codigo_{{$key}}" id="" cols="60" rows="4" placeholder="descripcion del codigo..." class="form-control"></textarea>
+							</div>
 						</div>
 					@break
 					@case(10)
@@ -129,7 +135,7 @@
 					@break
 					@case(13)
 						<div class="form-group">
-							<div class="card">
+							<div class="card border-success">
 									<div class="card-header">
 										<div class="row">
 											<div class="col"><strong>Genere su tabla</strong></div>
@@ -140,14 +146,14 @@
 													<option value="etiqueta">Etiqueta</option>
 												</select>
 											</div>
-											<a href="" id="btn_newRow" class="btn btn-info">Agregar fila</a>
+											<a href="" id="btn_newRow" class="btn btn-success">Agregar fila</a>
 										</div>
 									</div>
 									<div class="card-body">
 										<div class="form-group">
 											<table class="table table-striped table-bordered table-hover">
 												<thead>
-													<tr>
+													<tr class="table-success">
 														<th>nombre</th>
 														<th>descripcion</th>
 														<th>codigo</th>
@@ -171,7 +177,7 @@
 					@break
 					@case(14)
 						<div class="form-group">
-							<div class="card">
+							<div class="card border-primary">
 								<div class="card-header">
 									<div class="row">
 										<div class="col"><b>Datos de la practica</b></div>
@@ -206,11 +212,11 @@
 			@endforeach
 			<hr><!------------------ apartado de referencias ----------------->
 			<div class="form-group">
-				<div class="card">
+				<div class="card border-warning">
 					<div class="card-header">
 						<div class="row">
 							<div class="col"><strong>Apartado de Referencias</strong></div>
-							<div class="col-md-4 ml-auto"><a href="" id="btn_newRef" class="btn btn-sm btn-info">Nueva referencia</a></div>
+							<div class="col-md-4 ml-auto"><a href="" id="btn_newRef" class="btn btn-sm btn-success">Nueva referencia</a></div>
 						</div>
 					</div>
 					<div class="card-body" id="section_referencias">
