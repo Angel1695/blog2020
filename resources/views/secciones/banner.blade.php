@@ -9,13 +9,13 @@
 
             @foreach ($lenguajes as $hijo)
             <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="widget subscribe no-box" style="background: rgb(163, 228, 215);border-radius: 20px">
+                <div class="widget subscribe no-box" style="background: rgb(0, 0, 128);border-radius:">
                     <br>
-                        <h2 class="card-title" style="text-align:center;font-family:Sulphur Point;color:rgb(0, 0, 128);">
+                        <h2 class="card-title" style="text-align:center;font-family:Sulphur Point;color:rgb(242, 243, 244);">
                        
                             {{@$hijo['nombre']}} 
                         </h2>
-                    <p style="text-align:center;font-family:Sulphur Point;color:rgb(0, 0, 128)">
+                    <p style="text-align:center;font-family:Sulphur Point;color:rgb(242, 243, 244);">
                         <pre>{{@$hijo['descripcion']}}</pre>
                     </p>
                     <center><a href="{{url('/apartado/capitulos/'.$hijo->id)}}" class="btn btn-info">Ver</a></center>
