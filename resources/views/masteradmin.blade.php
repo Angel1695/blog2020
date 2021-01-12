@@ -7,7 +7,7 @@
     <!-- bostrap -->
     <link rel="stylesheet" href="{{asset('css/estilo_css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/prism/prism.css')}}">
-    
+    <link rel="stylesheet" href="{{asset('dropzone/min/dropzone.min.css')}}">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
@@ -29,13 +29,14 @@
 
     @yield('contenidoadmin')
 
-    @yield('script')
+    
 
     <!-- jquery -->
 
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('js/filesJS/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/prism/prism.js')}}"></script> 
+    <script src="{{asset('dropzone/min/dropzone.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
@@ -43,6 +44,7 @@
 
     <script src="{{ asset('/vendor/ckeditor/ckeditor.js') }}"></script>
 
+    @yield('script')
    
     
 </body>

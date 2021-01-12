@@ -1,4 +1,4 @@
-@extends('masterAdmin')
+@extends('masteradmin')
 
 @section('Titulo','Lista Tablas')
 

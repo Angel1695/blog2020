@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/ver','ComponentesController@vista');    
     Route::get('/limpiarcampo','ComponentesController@limpiarcampo')->name('limpiarcampo');
     Route::get('/getCapitulos/{lenguajes_id}', 'BlogController@getCapitulos');
+    Route::post('/subirimagen/{id}', 'relacionesController@subirImagen');
+    Route::get('/infosession', 'relacionesController@getSession');
+    Route::get('/forgetsession', 'relacionesController@forgetSession');
     
     Route::resource('/lenguajes','LenguajesController');
     Route::resource('/capitulos','CapitulosController');

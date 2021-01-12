@@ -15,21 +15,28 @@ use App\Relacion;
 
 class BlogController extends Controller
 {
+   
+    public function __construct(){
+        $this->model = new Blog;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+     
+     
     public function index()
     {
         switch(auth()->user()->idperfil){
             case 1:
-                $viewData['blogs'] = Blog::all();
+                $viewData['blogs'] = $this->model->lenguajes(Blog::all());
             break;
             case 2:case 3:
-                $viewData['blogs'] = Blog::where('idUser', auth()->user()->id)->get();
+                $viewData['blogs'] = $this->model->lenguajes(Blog::where('idUser', auth()->user()->id)->get());
         }
-        
+        //return $viewData;
         return view('admin.blogsc.index',$viewData);
     }
 

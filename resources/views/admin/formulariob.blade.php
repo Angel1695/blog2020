@@ -68,7 +68,12 @@
 						<div class="form-group">
 							<label for="" class="col-md-5"><strong><h6>Archivo de Imagen</h6></strong>
 							</label>
-							<div class="col-md-6 offset-md-2"><input type="file" class="form-control-file" name="imagen_{{$key}}"></div>
+							<div class="col-md-8 offset-md-2">
+								<!--<input type="file" class="form-control-file" name="imagen_{{$key}}">-->
+								<input type="hidden" name="imagen_{{$key}}" value="imagen">
+								<div id="imagen_{{$key}}" class="dropzone"></div>
+							</div>
+							
 						</div>
 					@break
 					@case(6)
@@ -237,14 +242,30 @@
 </div>
 @endsection
 @section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-var editor = ace.edit("editor");
-	editor.setTheme("ace/theme/monokai");
-	editor.session.setMode("ace/mode/javascript");
-</script>
+
 	<script>
+		Dropzone.autoDiscover = false;
 		$(document).ready(function(){
+			var drops = document.getElementsByClassName('dropzone');
+			//console.log(drops);
+			var myDrop = new Array(drops.length);
+			for(var i = 0; i < drops.length; i++){
+				console.log(drops[i].getAttribute('id'));
+				var nameId = drops[i].getAttribute('id');
+				myDrop[i] = new Dropzone("#"+drops[i].getAttribute('id'), {
+					url: '/subirimagen/'+drops[i].getAttribute('id'),
+					headers:{
+						"X-CSRF-TOKEN": "{{csrf_token()}}"
+					},
+					dictDefaultMessage: "Arrastra tus imagenes aqui ",
+					paramName:"files"
+					/*sending: function(file, xhr, formData){
+						formData.append('id', nameId);
+					}*/
+				});
+			}
+				
+
 			$('#btn_newRow').on('click', function(){
 				var tr = document.getElementsByClassName('row_table');
 				var key = $('tbody').data('key');
