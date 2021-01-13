@@ -3,8 +3,9 @@
 
 @section('contenido')
 <div class="container">
+    <br>
     <div class="card">
-        <div class="card-header"><strong>Lenguaje: </strong>{{$lenguaje->nombre}}</div>
+        <div class="card-header" style="background-color: rgb(34, 153, 84);"><h1 style="font-family:Sulphur Point;font-weight: bold;color: white">{{$lenguaje->nombre}}</h1></div>
         <div class="card-body">
             <ul class="nav nav-tabs">
                 @php  $cont = 0; @endphp
@@ -63,7 +64,7 @@
                                         @endforeach
                                     @else
                                         <div class="col-md-6 offset-md-3">
-                                            <h2>No hay blogs!!!</h2>
+                                            <h2>Aun no existen blogs!!!</h2>
                                         </div>
                                     @endif
                                 </div>

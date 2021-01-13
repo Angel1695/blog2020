@@ -22,8 +22,6 @@
 				{!! Form::text('nombre', null, array(
 						'class'=>'form-control',
 						'required'=>'required',
-						'required pattern'=> '[A-Za-záéíóúÁÉÍÓÚ\s.,]+',
-                      'title'=>'Solo se Aceptan letras.',
 						'placeholder'=>'Nombre...'
 					)) 
 				!!}
@@ -32,8 +30,6 @@
 				{!! Form::text('descripcion', null, array(
 						'class'=>'form-control',
 						'required'=>'required',
-						'required pattern'=> '[A-Za-záéíóúÁÉÍÓÚ\s.,]+',
-                      'title'=>'Solo se Aceptan letras.',
 						'placeholder'=>'Descripcion...'
 					)) 
 				!!}

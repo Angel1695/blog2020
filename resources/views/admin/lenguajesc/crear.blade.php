@@ -26,11 +26,9 @@
 				!!}
 			</div>
 			<div class="form-group">
-				{!! Form::textarea('descripcion', null, array(
-						'class'=>'ckeditor form-control',
+				{!! Form::text('descripcion', null, array(
+						'class'=>'form-control',
 						'required'=>'required',
-						'required pattern'=> '[A-Za-záéíóúÁÉÍÓÚ\s.,]+',
-                      'title'=>'Solo  se Aceptan letras.',
 						'placeholder'=>'Descripcion...'
 					)) 
 				!!}

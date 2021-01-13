@@ -1,4 +1,4 @@
-<div class="navbar navbar-light bg-light justify-content-between">
+<div   style="background-color: rgb(241, 196, 15);" class="navbar  justify-content-between">
     <!-- Brand/logo -->
     <div>
         <a class="navbar-brand" href="/">
@@ -36,7 +36,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: rgb(241, 196, 15,0.5);">
+<nav class="navbar navbar-expand-lg navbar-light " style="background: rgb(241, 196, 15,0.5);">
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background: rgb(241, 196, 15);">
         <ul class="navbar-nav mr-auto">
@@ -45,7 +45,7 @@
                         class="sr-only">(current)</span></a>
             </li>
             @foreach($lenguajes as $lenguaje)
-                <li class="nav-item dropdown" style="text-align:center;font-family:Sulphur Point;color:black;">
+                <li class="nav-item dropdown" style="text-align:center;font-family:Sulphur Point;color:black;font-weight: bold">
                     <a class="nav-link dropdown-toggle" href=""  role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">{{$lenguaje->nombre}}</a>
 
