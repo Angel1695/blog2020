@@ -18,7 +18,12 @@ class PlantillaController extends Controller
         $viewData['tablas'] = Tablas::where('idblog', $id)->get();
         $viewData['referencias'] = Referencias::where('idBlog', $id);
         $viewData['lenguaje'] = Lenguajes::find(@$viewData['blog']['capitulo']['idlenguajes'])->clave;
+        $viewData['lenguajes'] = Lenguajes::with('capitulos')->get();
          //return $viewData;
-        return view('plantillas.plantillaDefault', $viewData);
+         if(auth()->user()->idperfil == 1){
+            return view('plantillas.plantillaAdmin', $viewData);
+         }else{
+            return view('plantillas.plantilla', $viewData);
+         }
     }
 }

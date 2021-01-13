@@ -36,6 +36,13 @@ public function practica() {
 public function relacion()
     {
         return $this->belongsToMany('App\Relacion');
-    }      
+    } 
+
+    public function lenguajes($blogs){
+        foreach($blogs as $blog){
+            $blog['lenguaje'] = @Capitulos::with('lenguajes')->find($blog['idcapitulos'])->lenguajes;
+        }
+        return $blogs;
+    }     
 
 }

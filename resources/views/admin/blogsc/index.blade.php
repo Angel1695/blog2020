@@ -16,9 +16,9 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
+                        <th>Titular</th>
                         <th>Lenguaje</th>
                         <th>Capitulo</th>
-                        <th>Titular</th>
                         <th>Autor</th>
                         <th>Fecha</th>
                         <th>ver blog</th>
@@ -30,9 +30,9 @@
 
                     @foreach($blogs as $blog)
                     <tr>
-                        <td>{{$blog->lenguajes['nombre']}}</td>
-                        <td>{{$blog->capitulo['nombre']}}</td>
                         <td>{{$blog->titular}}</td>
+                        <td>{{$blog->lenguaje->nombre}}</td>
+                        <td>{{$blog->capitulo['nombre']}}</td>
                         <td>{{$blog->autor}}</td>
                         <td>{{$blog->fercha}}</td>
                         <td>

@@ -63,6 +63,9 @@
             <li class="nav-item" style="text-align:center;font-family:Sulphur Point;color:black;">
                 <a class="nav-link" href="{{url('/seccion/etiqueta')}}">Etiquetas<span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item" style="text-align:center;font-family:Sulphur Point;color:black;">
+                <a class="nav-link" href="{{url('/seccion/practicas')}}">Practicas<span class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tablas;
 use App\Blog;
 use App\Lenguajes;
+use App\Practicas;
 
 class EtiquetaController extends Controller
 {
@@ -21,7 +22,9 @@ class EtiquetaController extends Controller
     {
         $this->section = $section;
         $viewData['lenguajes'] = (auth()->user()->idperfil != 1) ? Lenguajes::with('capitulos')->get() : [];
-        $viewData['blogs'] = Blog::with(['capitulo', 'tablas'])->orderBy('idcapitulos')->get();
+        $viewData['blogs'] = Blog::with(['capitulo', 'tablas','practica'])->orderBy('idcapitulos')->get();
+        //$idblog = ($section == 'practicas') ? 'idBlog' : 'idblog';
+        $viewData['lenguaje'] = 'none';
         $viewData['section'] = $section;
         //return $viewData;
         return view('admin.tablasc.etiquetas',$viewData);
@@ -57,11 +60,18 @@ class EtiquetaController extends Controller
     public function show($section, $id)
     {
         $viewData['lenguajes'] = (auth()->user()->idperfil != 1) ? Lenguajes::with('capitulos')->get() : [];
-         $viewData['etiqueta'] = Tablas::find($id);
-         $viewData['blogs'] = Blog::with(['capitulo', 'tablas'])->orderBy('idcapitulos')->get();
+         $viewData['etiqueta'] = ($section == 'practicas') ? Practicas::find($id) :Tablas::find($id);
+         $idblog = ($section == 'practicas') ? 'idBlog' : 'idblog';
+         $viewData['lenguaje'] = Lenguajes::find(Blog::find($viewData['etiqueta'][$idblog])->capitulo->idlenguajes)->clave;
+         $viewData['blogs'] = Blog::with(['capitulo', 'tablas','practica'])->orderBy('idcapitulos')->get();
          $viewData['section'] =  $section;
          //return $viewData;
-         return view('admin.tablasc.etiquetas',$viewData);
+         if(auth()->user()->idperfil == 1){
+            return view('admin.tablasc.etiquetasAdmin',$viewData);
+         }else{
+            return view('admin.tablasc.etiquetas',$viewData);
+         }
+         
     }
 
     /**

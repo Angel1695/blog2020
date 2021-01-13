@@ -15,8 +15,13 @@
                        
                             {{@$hijo['nombre']}} 
                         </h2>
+<<<<<<< HEAD
                     <p style="text-align:center;font-family:Sulphur Point;color:rgb(242, 243, 244);">
                         <pre  style="font-family:Sulphur Point; text-align: center;">{{@$hijo['descripcion']}}</pre>
+=======
+                    <p style="text-align:center;font-family:Sulphur Point;color:rgb(0, 0, 128)">
+                        {{@$hijo['descripcion']}}
+>>>>>>> rama_gonzalo
                     </p>
                     <center><a href="{{url('/apartado/capitulos/'.$hijo->id)}}" class="btn btn-outline-warning">Ver</a></center>
                     <br>

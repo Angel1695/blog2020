@@ -37,6 +37,7 @@
 					<select name="clave"  class="form-control">
 						<option value="" disabled selected><em> Seleccione el tipo de sintaxis para su lenguaje</em></option>
 						<option value="markup">Markup</option>
+						<option value="html">HTML</option>
 						<option value="css">CSS</option>
 						<option value="javascript">JavaScript</option>
 						<option value="arduino">Arduino</option>
@@ -58,6 +59,7 @@
 						<option value="sql">SQL</option>
 						<option value="typescript">Typescript</option>
 						<option value="visual-basic">Visual Basic</option>
+						<option value="none">Otro..</option>
 					</select>
 			</div>
 			

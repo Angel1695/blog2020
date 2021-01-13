@@ -1,9 +1,4 @@
-@extends('masteradmin')
-@section('Titulo','Lista de Blogs')
 
-
-
-@section('contenidoadmin')
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -40,9 +35,7 @@
                     @case (5)
                         <div class="row text-center">
                             <div class="col-md-8 offset-md-2">
-                                <object class="card-img-top" data="{{asset($item->valor)}}" type="image/png">
-                                    <img class="card-img-top" src="{{asset('archivos/h3.png')}}" />
-                                </object>
+                                    <img class="card-img-top" src="{{asset($item->valor)}}" />
                             </div>
                             
                         </div>
@@ -79,15 +72,15 @@
                     @case (13)<!--tabla-->
                         <br><div class="row text-justify">
                             <div class="col-md-10 offset-md-1">
-                                <div class="card">
+                                <div class="card  border-warning mb-3">
                                     <div class="card-header"><h4>Tabla de {{$tablas[0]['tipo']}}s</h4></div>
                                     <div class="card-body">
                                         <div class="col-md-12">
-                                            <table class="table table-hover table-striped table-bordered table-light">
+                                            <table class="table table-hover table-striped table-bordered table-light table-responsive">
                                                 <thead>
                                                     <tr>
                                                         <th>Nombre</th>
-                                                        <th>Descripcion</th>
+                                                        <th>Descripcion del elemento</th>
                                                         <th>Codigo</th>
                                                     </tr>
                                                 </thead>
@@ -95,7 +88,7 @@
                                                     @foreach($tablas as $tabla)
                                                         <tr>
                                                             <td>{{$tabla->nombre}}</td>
-                                                            <td><small>{{$tabla->descripcion}}</small></td>
+                                                            <td><p>{{$tabla->descripcion}}</p></td>
                                                             <td><pre><code class="language-{{$lenguaje}}">{{$tabla->codigo}}</code></pre></td>
                                                         </tr>
                                                     @endforeach    
@@ -111,7 +104,7 @@
                     @case (14)<!--practicas-->
                         <div class="row text-justify">
                             <div class="col-md-10 offset-md-1">
-                                <div class="card">
+                                <div class="card  border-primary mb-3">
                                 <div class="card-header"><h4>Practica</h4></div>
                                 <div class="card-body">
                                     <div class="col-md-12">
@@ -137,7 +130,3 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('script')
-@endsection

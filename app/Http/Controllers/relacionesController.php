@@ -49,6 +49,7 @@ class relacionesController extends Controller
         //return $request;
         
         $blog = @session('blog');
+        $session = session('imagenes');
        // return $blog;
         $componentes = @session('componentes');
         foreach($request->except('_token', 'referencias') as $key => $item){
@@ -57,7 +58,8 @@ class relacionesController extends Controller
             //Guardar esa información en la tabla
             switch($componente_id){
                 case 5:case 11:
-                    $item = $request->file($key)->store('imagenes', 'public');
+                    //$item = $request->file($key)->store('imagenes', 'public');
+                    $item = $session[$key];
                 break;
                 case 13:
                     $tablas = $request->{$key};
@@ -94,6 +96,7 @@ class relacionesController extends Controller
         }
         session()->forget('componentes');
         session()->forget('blog');
+        session()->forget('imagenes');
         $mensaje = $relaciones?'Blog creado correctamente!':'el Blog no ha sido creado!';
         return redirect()->route('blogs.index')->with('mensaje',$mensaje);
     }
@@ -165,5 +168,24 @@ class relacionesController extends Controller
         }catch (\Illuminate\Database\QueryException $e){
             return redirect()->route('relaciones.index')->with('mensaje',$mensaje);
         }
+    }
+
+    public function subirImagen( Request $request, $id){
+       // return ["res" => $request];
+        $imagenName = $request->file('files')->store('imagenes', 'public');
+        if(session()->has('imagenes')){
+            $session = session('imagenes');
+            $session[$id] = $imagenName;
+            session(['imagenes'=>$session]);
+        }else{
+            session(['imagenes'=>[$id =>$imagenName]]);
+        }
+        return "ok";
+    }
+    public function getSession(){
+        return session('imagenes');
+    }
+    public function forgetSession(){
+        session()->forget('imagenes');
     }
 }
