@@ -111,31 +111,23 @@
 					@break
 					@case(10)
 						<div class="form-group">
-							{!! Form::text('titulo_video_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'titulo de video...'
-							))
-							!!}
+							<div class="col-md-8 offset-md-2">
+								{!! Form::text('titulo_video_'.$key, null, array(
+								'class'=>'form-control',
+								'placeholder'=>'titulo de video...'
+								))
+								!!}
+							</div>
 						</div>
 					@break
 					@case(11)
-						<div>
-							<strong>
-								<h6>Archivo de Video</h6>
-							</strong>
-							<div class="form-group">
-								<input type="file" class="form-control-file" name="video_{{$key}}">
+						<div class="form-group">
+							<label for="" class="col-md-4">Archivo de video <small>(Pegue el link de su video)</small></label>
+							<div class="col-md-10 offset-md-1">
+								<input type="url" class="form-control" name="video_{{$key}}" placeholder="https://direccion/mi/video.mp4">
 							</div>
 							@break
 							
-						</div>
-					@case(12)
-						<div class="form-group">
-							{!! Form::text('decripcion_video_'.$key, null, array(
-							'class'=>'form-control',
-							'placeholder'=>'descrpcion de video...'
-							))
-							!!}
 						</div>
 					@break
 					@case(13)
@@ -215,7 +207,7 @@
 					@break
 				@endswitch
 			@endforeach
-			<hr><!------------------ apartado de referencias ----------------->
+			<br><hr><!------------------ apartado de referencias ----------------->
 			<div class="form-group">
 				<div class="card border-warning">
 					<div class="card-header">

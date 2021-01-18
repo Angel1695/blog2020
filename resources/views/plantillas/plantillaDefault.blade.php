@@ -69,6 +69,20 @@
                             </div>
                         </div><br>
                     @break
+                    @case(10)
+                        <div class="row text-center">
+                            <div class="col-md-8 offset-md-2">
+                                <h6><strong>{{$item->valor}}</strong></h6>
+                            </div>
+                        </div>
+                    @break
+                    @case(11)
+                    <div class="row text-center">
+                        <div class="col-md-8 offset-md-2">
+                            <a href="{{$item->valor}}" target="_blank" class="btn btn-link">{{$item->valor}}</a>
+                        </div>
+                    </div>
+                    @break
                     @case (13)<!--tabla-->
                         <br><div class="row text-justify">
                             <div class="col-md-10 offset-md-1">

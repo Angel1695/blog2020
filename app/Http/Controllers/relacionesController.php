@@ -57,7 +57,7 @@ class relacionesController extends Controller
             $componente_id = $componentes[end($id)];
             //Guardar esa información en la tabla
             switch($componente_id){
-                case 5:case 11:
+                case 5:
                     //$item = $request->file($key)->store('imagenes', 'public');
                     $item = $session[$key];
                 break;
