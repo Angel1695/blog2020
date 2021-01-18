@@ -140,20 +140,26 @@ class BlogController extends Controller
         $bloge->save();
 
         //ACTUALIZANDO PRACTICA
-        $practica = Practicas::where('idBlog', $id*1)->first();
-        foreach($request->practica as $k=>$v){
-            $practica->{$k} = $v;
+        if(array_key_exists('practica',$request->all())){
+            $practica = Practicas::where('idBlog', $id*1)->first();
+            foreach($request->practica as $k=>$v){
+                $practica->{$k} = $v;
+            }
+            $practica->save();
         }
-        $practica->save();
+        
 
         //ACTUALIZA INFORMACION DE TABLAS;
-        foreach($request->table as $id=>$values){
-            $tabla = Tablas::find($id);
-            foreach($values as $k=>$v){
-                $tabla->{$k} = $v;
+        if(array_key_exists('table',$request->all())){
+            foreach($request->table as $id=>$values){
+                $tabla = Tablas::find($id);
+                foreach($values as $k=>$v){
+                    $tabla->{$k} = $v;
+                }
+                $tabla->save();
             }
-            $tabla->save();
         }
+        
 
         //ACTUALIZANDO INFORMACION DE RELACIONES(ESTRUCTURA DEL BLOG)
         foreach($request->componente as $id=>$values){
