@@ -38,7 +38,12 @@
 										<div class="col-md-8">
 											<select name="blog[idcapitulos]" id="" class="form-control">
 												@foreach($capitulos as $capitulo)
-													<option value="{{$capitulo->id}}" selected="{{($capitulo->id == $blog->idcapitulos) ? true : false}}">{{$capitulo->nombre}}</option>	
+													@if($capitulo['id'] == $blog->idcapitulos)
+														<option value="{{$capitulo->id}}" selected="true">{{$capitulo->nombre}}</option>	
+													@else
+														<option value="{{$capitulo->id}}">{{$capitulo->nombre}}</option>	
+													@endif
+													
 												@endforeach
 											</select>
 										</div>
@@ -72,19 +77,19 @@
 									<div class="form-group row">
 										<label for="" class="col-md-4">Nombre</label>
 										<div class="col-md-8">
-											<input type="text" name="practica[nombre]" value="{{$blog->capitulo->nombre}}" id="" class="form-control">
+											<input type="text" name="practica[nombre]" value="{{$blog->practica->nombre}}" id="" class="form-control">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="" class="col-md-4">Descripcion</label>
 										<div class="col-md-8">
-											<input type="text" id="" name="practica[descripcion]" value="{{$blog->capitulo->descripcion}}" class="form-control">
+											<input type="text" id="" name="practica[descripcion]" value="{{$blog->practica->descripcion}}" class="form-control">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="" class="col-md-4">Codigo</label>
 										<div class="col-md-8">
-											<textarea name="practica[codigo]" id="" cols="30" rows="10" class="form-control">{{$blog->capitulo->codigo}}</textarea>
+											<textarea name="practica[codigo]" id="" cols="30" rows="10" class="form-control">{{$blog->practica->codigo}}</textarea>
 										</div>
 									</div>
 								@endif
