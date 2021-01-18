@@ -94,7 +94,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -105,10 +105,20 @@ class BlogController extends Controller
      */
     public function edit($id)
     { 
+
+        $viewData['blog']=Blog::with(['practica', 'capitulo'])->where('id',$id)->first();
+        $viewData['capitulos'] = Capitulos::all();
+        $viewData['componentes']= Relacion::where('idblog', $id)->orderBy('orden', 'ASC')->get();
+        $viewData['tablas'] = Tablas::where('idblog', $id)->get();
+        $viewData['referencias'] = Referencias::where('idBlog', $id);
+        $viewData['lenguaje'] = Lenguajes::find(@$viewData['blog']['capitulo']['idlenguajes'])->clave;
+        $viewData['lenguajes'] = Lenguajes::with('capitulos')->get();
+        //return $viewData;
+
         $lenguajee = DB::table('lenguajes')->pluck('nombre', 'id');
         $capituloe = DB::table('capitulos')->pluck('nombre', 'id');
         $bloge = Blog::find($id);
-        return view('admin.blogsc.editar', compact('lenguajee','capituloe','bloge'));
+        return view('admin.blogsc.editar', $viewData);
     }
 
     /**
@@ -120,24 +130,53 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Validar la información
-        $this->validate($request, [
-            'idlenguajes' => 'required',
-            'idcapitulos' => 'required',
-            'titular' => 'required',
-            'autor' => 'required',
-            'fercha' => 'required'
-        ]); 
+        //return $request;
 
-        //Actualizar la informacion
+        //ACTUALIZAR BLOG
         $bloge = Blog::find($id);
-        $bloge->idlenguajes = $request->get("idlenguajes");
-        $bloge->idcapitulos = $request->get("idcapitulos");
-        $bloge->titular = $request->get("titular");
-        $bloge->autor = $request->get("autor");
-        $bloge->fercha = $request->get("fercha");
+        foreach($request->blog as $k=>$v){
+            $bloge->{$k} = $v;
+        }
         $bloge->save();
 
+        //ACTUALIZANDO PRACTICA
+        $practica = Practicas::where('idBlog', $id*1)->first();
+        foreach($request->practica as $k=>$v){
+            $practica->{$k} = $v;
+        }
+        $practica->save();
+
+        //ACTUALIZA INFORMACION DE TABLAS;
+        foreach($request->table as $id=>$values){
+            $tabla = Tablas::find($id);
+            foreach($values as $k=>$v){
+                $tabla->{$k} = $v;
+            }
+            $tabla->save();
+        }
+
+        //ACTUALIZANDO INFORMACION DE RELACIONES(ESTRUCTURA DEL BLOG)
+        foreach($request->componente as $id=>$values){
+            $componente = Relacion::find($id);
+            switch($componente->idcomponente){
+                case(5):
+                    if(session()->has('imagenes')){
+                        $session = session('imagenes');
+                        $componente->valor = (array_key_exists('imagen_'.$id,$session)) ? $session['imagen_'.$id] : $values['valor'];
+                        
+                    }else{
+                        $componente->valor = $values['valor'];    
+                    }
+                break;
+                default:
+                    $componente->valor = $values['valor'];
+                break;
+            }
+
+            
+            $componente->save();
+        }
+        if(session()->has('imagenes')){session()->forget('imagenes');}
         $mensaje = $bloge?'Blog actualizado correctamente!':'El Blog no ha sido actualizado!';
         return redirect()->route('blogs.index')->with('mensaje',$mensaje);
     }

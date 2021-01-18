@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/subirimagen/{id}', 'relacionesController@subirImagen');
     Route::get('/infosession', 'relacionesController@getSession');
     Route::get('/forgetsession', 'relacionesController@forgetSession');
+    //Route::put('/blogs/{id}','BlogController@update');
     
     Route::resource('/lenguajes','LenguajesController');
     Route::resource('/capitulos','CapitulosController');

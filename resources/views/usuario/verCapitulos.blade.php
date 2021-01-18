@@ -2,6 +2,7 @@
 @section('Titulo','Bienvenido')
 
 @section('contenido')
+<div class="main-footer widgets-dark typo-light">
 <div class="container">
     <br>
     <div class="card">
@@ -78,5 +79,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

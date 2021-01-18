@@ -27,7 +27,12 @@ class EtiquetaController extends Controller
         $viewData['lenguaje'] = 'none';
         $viewData['section'] = $section;
         //return $viewData;
-        return view('admin.tablasc.etiquetas',$viewData);
+        //return view('admin.tablasc.etiquetas',$viewData);
+        if(auth()->user()->idperfil == 1){
+            return view('admin.tablasc.etiquetasAdmin',$viewData);
+         }else{
+            return view('admin.tablasc.etiquetas',$viewData);
+         }
     }
 
     /**

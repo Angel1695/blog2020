@@ -108,13 +108,13 @@
                                 <div class="card-header"><h4>Practica</h4></div>
                                 <div class="card-body">
                                     <div class="col-md-12">
-                                        <div class="row text-center"><h5>{{$blog->practica->nombre}}</h5></div>
+                                        <div class="row text-center"><h5>{{@$blog->practica->nombre}}</h5></div>
                                         <br><div class="row text-justify">
-                                            <p>{{$blog->practica->descripcion}}</p>
+                                            <p>{{@$blog->practica->descripcion}}</p>
                                         </div><br>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <pre><code class="language-{{$lenguaje}}">{{$blog->practica->codigo}}</code></pre>
+                                                <pre><code class="language-{{$lenguaje}}">{{@$blog->practica->codigo}}</code></pre>
                                             </div>
                                         </div>
                                     </div>
