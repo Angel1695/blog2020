@@ -38,6 +38,7 @@
 					<select name="clave" id="clave">
 						<option value="e">Seleccione el tipo de sintaxis para su lenguaje</option>
 						<option value="markup">Markup</option>
+						<option value="html">HTML</option>
 						<option value="css">CSS</option>
 						<option value="javascript">JavaScript</option>
 						<option value="arduino">Arduino</option>
