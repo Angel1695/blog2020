@@ -5,10 +5,10 @@
 <div class="main-footer widgets-dark typo-light">
 <div class="container">
     <br>
-    <div class="card">
-        <div class="card-header" style="background-color: rgb(34, 153, 84);"><h1 style="font-family:Sulphur Point;font-weight: bold;color: white">{{$lenguaje->nombre}}</h1></div>
+    <div class="card" >
+        <div class="card-header" style="background: rgb(0,0,139)"><h1 style="font-family:Sulphur Point;font-weight: bold;color: white">{{$lenguaje->nombre}}</h1></div>
         <div class="card-body">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs" style="font-family:Sulphur Point;  font-weight:bold;">
                 @php  $cont = 0; @endphp
                 @foreach($capitulos as $cap)
                     <li class="nav-item">
@@ -39,12 +39,12 @@
                                     @if(!$cap->blogs->isEmpty())
                                         @foreach($cap->blogs as $blog)
                                         
-                                            <div class="col-md-4 text-center">
-                                                <div class="card">
-                                                    <div class="card-header"><strong>{{$blog->titular}}</strong></div>
+                                            <div class="col-md-4 text-center" style="font-family: Comfortaa">
+                                                <div  class="card border-warning mb-3" style="max-width: 18rem;">
+                                                    <div class="card-header"  style="font-weight:bold;background: rgb(241, 196, 15);"><strong >{{$blog->titular}}</strong></div>
                                                     <div class="card-body">
-                                                        <div class="col-md-12"><strong>Autor</strong></div>
-                                                        <label for="">{{$blog->autor}}</label><br>
+                                                        <div class="col-md-12" style="font-weight:bold;"><strong>Autor</strong></div>
+                                                        <label for="" style="font-family:Sulphur Point;">{{$blog->autor}}</label><br>
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="col-md-12"><strong>Tablas</strong></div>
@@ -57,7 +57,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <center><a href="{{route('plantilladefault',$blog->id )}}" class="btn btn-success">Ver blog</a></center>
+                                                        <center><a href="{{route('plantilladefault',$blog->id )}}"class="btn btn-outline-dark" class="fa fa-eye fa-2x">Ver</a></center>
                                                     </div>
                                                 </div><br>
                                             </div>
