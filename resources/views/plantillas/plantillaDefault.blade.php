@@ -145,6 +145,35 @@
                     @endswitch
                     
                 @endforeach
+                <br>
+                <div class="form-group">
+                    <div class="card border-success">
+                        <div class="card-header">Referencias</div>
+                        <div class="card-body text-center">
+                            @if($referencias->isEmpty())
+                                <label for="">No hay referencias!!!</label>
+                            @else
+                                @foreach($referencias as $k=>$referencia)
+                                    <div class="row text-center">
+                                        <div class="col-md-3">{{$k + 1}}</div>
+                                        <label class="col-md-9" for="">{{$referencia->nombre}}</label>
+                                    </div>
+                                    
+                                @endforeach
+                            @endif
+                            <br><hr>
+                            <div class="form-group row">
+                                <label class="col-md-3" for="">Autor</label>
+                                <label for="" class="col-md-9">{{@$blog->autor}}</label>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3" for="">Fecha</label>
+                                <label for="" class="col-md-9">{{@$blog->fercha}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
