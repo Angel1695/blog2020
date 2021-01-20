@@ -20,7 +20,7 @@ class PlantillaController extends Controller
         $viewData['lenguaje'] = Lenguajes::find(@$viewData['blog']['capitulo']['idlenguajes'])->clave;
         $viewData['lenguajes'] = Lenguajes::with('capitulos')->get();
          //return $viewData;
-         if(auth()->user()->idperfil == 1){
+         if(auth()->user()->idperfil == 1 || auth()->user()->idperfil == 2){
             return view('plantillas.plantillaAdmin', $viewData);
          }else{
             return view('plantillas.plantilla', $viewData);

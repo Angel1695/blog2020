@@ -28,7 +28,7 @@ class EtiquetaController extends Controller
         $viewData['section'] = $section;
         //return $viewData;
         //return view('admin.tablasc.etiquetas',$viewData);
-        if(auth()->user()->idperfil == 1){
+        if(auth()->user()->idperfil == 1 || auth()->user()->idperfil == 2){
             return view('admin.tablasc.etiquetasAdmin',$viewData);
          }else{
             return view('admin.tablasc.etiquetas',$viewData);
@@ -71,7 +71,7 @@ class EtiquetaController extends Controller
          $viewData['blogs'] = Blog::with(['capitulo', 'tablas','practica'])->orderBy('idcapitulos')->get();
          $viewData['section'] =  $section;
          //return $viewData;
-         if(auth()->user()->idperfil == 1){
+         if(auth()->user()->idperfil == 1 || auth()->user()->idperfil == 2){
             return view('admin.tablasc.etiquetasAdmin',$viewData);
          }else{
             return view('admin.tablasc.etiquetas',$viewData);
