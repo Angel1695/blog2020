@@ -1,7 +1,6 @@
-
 <div class="container">
     <div class="card">
-        <div class="card-body">
+        <div class="card-body" style="font-family: Quicksand">
             @foreach($componentes as $item)
                 @switch($item->idcomponente)
                     @case (1)     
@@ -13,15 +12,15 @@
                     @break
                     @case (2)
                         <div class="row text-center">
-                            <div class="col-md-12">
+                            <div class="col-md-12" >
                                 <h3><strong>{{$item->valor}}</strong></h3>
                             </div>
                         </div><br>
                     @break
                     @case (3)
-                        <div class="row text-justify">
-                            <div class="col-md-10 offset-md-1">
-                                <p>{{$item->valor}}</p>
+                        <div  class="row text-justify">
+                            <div id="uno"  class="col-md-10 offset-md-1" >
+                                <p >{{$item->valor}}</p>
                             </div>
                         </div><br>
                     @break
@@ -35,9 +34,8 @@
                     @case (5)
                         <div class="row text-center">
                             <div class="col-md-8 offset-md-2">
-                                    <img class="card-img-top" src="{{asset($item->valor)}}" />
+                                    <img class="card-img-top" width="20%" src="{{asset($item->valor)}}"  />
                             </div>
-                            
                         </div>
                     @break
                     @case (6)
@@ -56,7 +54,7 @@
                     @break
                     @case (8)
                         <div class="row text-center">
-                            <div class="col-md-10 offset-md-1">
+                            <div id="codedos" class="col-md-10 offset-md-1">
                                 <pre><code class="language-{{$lenguaje}}">{{$item->valor}}</code></pre>
                               
                             </div>
@@ -86,8 +84,8 @@
                     @case (13)<!--tabla-->
                         <br><div class="row text-justify">
                             <div class="col-md-10 offset-md-1">
-                                <div class="card  border-warning mb-3">
-                                    <div class="card-header"><h4>Tabla de {{$tablas[0]['tipo']}}s</h4></div>
+                                <div class="card  border-info mb-3">
+                                    <div class="card-header" style="background-color: rgba(0,0,139);color: white"><h4>Tabla de {{$tablas[0]['tipo']}}s</h4></div>
                                     <div class="card-body">
                                         <div class="col-md-12">
                                             <table class="table table-hover table-striped table-bordered table-light table-responsive">
@@ -119,7 +117,7 @@
                         <div class="row text-justify">
                             <div class="col-md-10 offset-md-1">
                                 <div class="card  border-primary mb-3">
-                                <div class="card-header"><h4>Practica</h4></div>
+                                <div class="card-header" style="background-color: rgba(0,0,139);color: white"><h4>Practica</h4></div>
                                 <div class="card-body">
                                     <div class="col-md-12">
                                         <div class="row text-center"><h5>{{@$blog->practica->nombre}}</h5></div>
